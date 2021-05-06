@@ -1,13 +1,35 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
+
+import {Provider} from "react-redux"; 
+import {createStore, applyMiddleware} from "redux"; 
+import {composeWithDevTools} from 'redux-devtools-extension'; 
+import thunk from 'redux-thunk'; 
+import {Router, Route} from 'react-router'; 
+import {createBrowserHistory} from 'history';
+import {syncHistoryWithStore} from 'react-router-redux'; 
+
+import reducer from "./reducers";
+
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import AddWorker from './views/AddWorker';
+import ChangeWorker from './views/ChangeWorker';
+
+const store=createStore(reducer, composeWithDevTools(applyMiddleware(thunk)));
+const history=syncHistoryWithStore(createBrowserHistory(), store);
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider store={store}> 
+    <Router history={history}>
+      <Route path="/" component={App} exact/>
+      <Route path="/add" component={AddWorker}/>
+      <Route path="/workers/:id" component={ChangeWorker}/>
+    </Router>
+  </Provider>,
   document.getElementById('root')
 );
 
