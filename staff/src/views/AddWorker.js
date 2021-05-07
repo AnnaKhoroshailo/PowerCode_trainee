@@ -1,9 +1,9 @@
 function AddWorker() {
-    return (
-        <div>
-            Добавление
-        </div>
-    );
+  return (
+    <div>
+      Добавление
+    </div>
+  );
 }
   
 export default AddWorker;
