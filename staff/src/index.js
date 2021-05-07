@@ -18,6 +18,7 @@ import reportWebVitals from './reportWebVitals';
 
 import AddWorker from './views/AddWorker';
 import ChangeWorker from './views/ChangeWorker';
+import WorkerInfo from './views/WorkerInfo';
 
 const store=createStore(reducer, composeWithDevTools(applyMiddleware(thunk)));
 const history=syncHistoryWithStore(createBrowserHistory(), store);
@@ -27,7 +28,8 @@ ReactDOM.render(
     <Router history={history}>
       <Route path="/" component={App} exact/>
       <Route path="/add" component={AddWorker}/>
-      <Route path="/workers/:id" component={ChangeWorker}/>
+      <Route path="/workers/:id" component={WorkerInfo} exact/>
+      <Route path="/workers/:id/edit" component={ChangeWorker}/>
     </Router>
   </Provider>,
   document.getElementById('root')

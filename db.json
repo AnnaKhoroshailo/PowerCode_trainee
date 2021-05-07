@@ -1,0 +1,22 @@
+{
+  "staff": [
+    {
+      "id": 1,
+      "name": "Василий",
+      "url": "https://proforientator.ru/publications/articles/New%20Folder/programmist_st.jpg",
+      "position": "Веб-разработчик",
+      "salary": 500,
+      "status": "Работает",
+      "date": "Ноябрь 24 2011"
+    },
+    {
+      "id": 2,
+      "name": "Мария",
+      "url": "https://st3.depositphotos.com/13794496/16404/i/600/depositphotos_164049244-stock-photo-designer-with-sketches-at-workplace.jpg",
+      "position": "Дизайнер",
+      "salary": 400,
+      "status": "Работает",
+      "date": "Ноябрь 25 2014"
+    }
+  ]
+}
