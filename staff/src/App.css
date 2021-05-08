@@ -1,13 +1,22 @@
+section {
+  margin: 20px 0;
+}
 .card-link {
   color: #fff;
-  text-align: center;
-  display: block;
   text-transform: uppercase;
-  margin-bottom: 10px;
+  text-decoration: none;
 }
 .card-link:hover {
-  color: #333;
+  color: #fff;
+  border-bottom: 1px solid #565e64;
+}
+.card-button {
+  padding: 2px 5px;
+}
+.card-button-edit {
+  margin-right: 5px;
 }
 .card-img-top {
   height: 130px;
+  margin-top: 10px;
 }

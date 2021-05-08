@@ -26,10 +26,10 @@ const history=syncHistoryWithStore(createBrowserHistory(), store);
 ReactDOM.render(
   <Provider store={store}> 
     <Router history={history}>
-      <Route path="/" component={App} exact/>
-      <Route path="/add" component={AddWorker}/>
-      <Route path="/workers/:id" component={WorkerInfo} exact/>
-      <Route path="/workers/:id/edit" component={ChangeWorker}/>
+      <Route path="/" component={App} exact />
+      <Route path="/add" component={AddWorker} />
+      <Route path="/workers/:id" component={WorkerInfo} exact />
+      <Route path="/workers/:id/edit" component={ChangeWorker} />
     </Router>
   </Provider>,
   document.getElementById('root')
