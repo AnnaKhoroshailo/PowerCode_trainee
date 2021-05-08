@@ -2,10 +2,15 @@ import './App.css';
 import { Link } from 'react-router-dom';
 import { Button, Card } from 'react-bootstrap';
 
-import {connect} from "react-redux";
-import {asyncGetStaff} from "./actions/"; 
+import { connect } from "react-redux";
+import { asyncGetStaff } from "./actions/"; 
+
+import { useEffect } from 'react';
 
 function App(props) {
+  useEffect(() => {
+    if(props.staff.length===0) props.onLoadStaff();
+  });
   return (
     <div className="App">
       <section className="container">
@@ -53,7 +58,7 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    onLoadStaff: dispatch(asyncGetStaff())
+    onLoadStaff: ()=>{dispatch(asyncGetStaff())}
   };
 };
 
