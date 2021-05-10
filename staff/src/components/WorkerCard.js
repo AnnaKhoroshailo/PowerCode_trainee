@@ -1,6 +1,6 @@
 import { Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import {moment} from 'moment';
+import moment from "moment";
 
 function WorkerCard(props) {
   const {worker}=props;
@@ -28,7 +28,7 @@ function WorkerCard(props) {
             Статус: {worker.status}
           </Card.Text>
           <Card.Text>
-            Дата начала работы: {moment("Date(worker.date)").locale('ru').format('L')}
+            Дата начала работы: {moment(`Date(${worker.date})`).locale('ru').format('L')}
           </Card.Text>
         </Card.Body>
       </Card>
