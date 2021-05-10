@@ -13,6 +13,7 @@ function App(props) {
   return (
     <div className="App">
       <section className="container">
+        <h1>Сотрудники</h1>
         <div className="row">
           {props.staff.map((worker,i)=>(
             <WorkerCard worker={worker} key={i}/>

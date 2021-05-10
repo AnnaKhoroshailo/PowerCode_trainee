@@ -1,5 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+img {
+  width: 100%;
+}
+h1 {
+  margin-bottom: 20px;
+  text-align: center;
+}
 section {
   margin: 20px 0;
+}
+.card-text {
+  color: #212529;
+}
+.card-text .worker-text {
+  color: #fff;
 }
 .card-link {
   color: #fff;

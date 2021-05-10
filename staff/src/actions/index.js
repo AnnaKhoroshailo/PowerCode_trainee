@@ -5,3 +5,8 @@ export const asyncGetStaff=()=>dispatсh=> {
     dispatсh({type: "FETCH_LIST_STAFF", payload: response.data}); 
   })
 }
+export const asyncGetWorker=(id)=>dispatсh=> {
+  axios(API+`/${id}`).then(response=>{
+    dispatсh({type: "ADD_WORKER", payload: response.data}); 
+  })
+}

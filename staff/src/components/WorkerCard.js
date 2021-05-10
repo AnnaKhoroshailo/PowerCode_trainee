@@ -19,16 +19,16 @@ function WorkerCard(props) {
         </Card.Header>
         <Card.Body>
           <Card.Text>
-            Должность: {worker.position}
+            Должность: <span className="worker-text">{worker.position}</span>
           </Card.Text>
           <Card.Text>
-            Зарплата: {worker.salary} $
+            Зарплата: <span className="worker-text">{worker.salary} $</span>
           </Card.Text>
           <Card.Text>
-            Статус: {worker.status}
+            Статус: <span className="worker-text">{worker.status}</span>
           </Card.Text>
           <Card.Text>
-            Дата начала работы: {moment(`Date(${worker.date})`).locale('ru').format('ll')}
+            Дата начала работы: <span className="worker-text">{moment(`Date(${worker.date})`).locale('ru').format('DD/MM/YYYY')}</span>
           </Card.Text>
         </Card.Body>
       </Card>
