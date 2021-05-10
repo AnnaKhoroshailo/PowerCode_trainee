@@ -28,7 +28,7 @@ function WorkerCard(props) {
             Статус: {worker.status}
           </Card.Text>
           <Card.Text>
-            Дата начала работы: {moment(`Date(${worker.date})`).locale('ru').format('L')}
+            Дата начала работы: {moment(`Date(${worker.date})`).locale('ru').format('ll')}
           </Card.Text>
         </Card.Body>
       </Card>
