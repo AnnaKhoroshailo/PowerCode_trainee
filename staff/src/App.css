@@ -38,3 +38,15 @@ section {
   height: 130px;
   margin-top: 10px;
 }
+.form-error {
+  color: #dc3545;
+}
+.form-elem {
+  margin-bottom: 20px;
+}
+.form-elem input, .form-elem input:focus {
+  border: 1px solid #0d6efd;
+  padding: 5px;
+  margin-left: 5px;
+  outline: none;
+}
