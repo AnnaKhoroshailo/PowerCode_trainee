@@ -101,7 +101,7 @@ function AddWorker(props) {
               value={formik.values.salary}
               onChange={formik.handleChange}
             />
-            {formik.errors.sallary && formik.touched.sallary && (
+            {formik.errors.salary && formik.touched.salary && (
               <p className="form-error">{formik.errors.salary}</p>
             )}
           </div>
