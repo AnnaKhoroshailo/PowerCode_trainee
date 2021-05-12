@@ -11,6 +11,11 @@ export default function staff(state=initialState, action) {
       return state.filter(worker=>worker.id !== action.payload);
     case "FETCH_LIST_STAFF":
       return action.payload;
+    case "UPDATE_LIST_STAFF":
+      return [
+        ...state.filter(worker=>worker.id !== action.payload.id),
+        action.payload
+      ]
     default:
       return state;
   }

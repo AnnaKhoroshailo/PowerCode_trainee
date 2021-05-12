@@ -15,3 +15,8 @@ export const asyncAddWorker=(worker)=>dispatсh=> {
     dispatсh({type: "ADD_WORKER", payload: response.data}); 
   })
 }
+export const asyncUpdateWorker=(id, worker)=>dispatсh=> {
+  axios.put(`${API}/${id}`, worker).then(response=>{
+    dispatсh({type: "UPDATE_LIST_STAFF", payload: response.data}); 
+  })
+}

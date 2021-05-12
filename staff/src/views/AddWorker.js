@@ -34,14 +34,11 @@ function AddWorker(props) {
         .required("Обязательно!")
     }),
     onSubmit: values => {
-      let {name, url, position, salary, status, date}=values;
-      let worker={};
-      worker.name=name;
-      worker.url=url;
-      worker.position=position;
-      worker.salary=+salary;
-      worker.status=status;
-      worker.date=new Date(date).getTime();
+      let worker={
+        ...values,
+        date: new Date(values.date).getTime(),
+        salary: +values.salary
+      };
       props.onAddWorker(worker); 
       handleClick();
     }
@@ -58,7 +55,7 @@ function AddWorker(props) {
         <h1>Новый сотрудник</h1>
         <form onSubmit={formik.handleSubmit} className="form">
           <div className="form-elem">
-            <label>Имя </label>
+            <label>Имя</label>
             <input
               type="text"
               name="name"
