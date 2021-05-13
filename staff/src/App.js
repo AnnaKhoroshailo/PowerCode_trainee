@@ -9,11 +9,10 @@ import { asyncGetStaff } from "./actions/";
 
 import { useEffect } from 'react';
 
-function App(props) {
+function App({onLoadStaff, staff}) {
   useEffect(() => {
-    if(props.staff.length===0) props.onLoadStaff();
-  });
-
+    onLoadStaff();
+  }, [onLoadStaff]);
   let history=useHistory();
   function handleClick() {
     history.push("/add");
@@ -25,7 +24,7 @@ function App(props) {
         <h1>Сотрудники</h1>
         <Button onClick={handleClick}>Добавить нового сотрудника</Button>
         <div className="row mt-4">
-          {props.staff.map((worker,i)=>(
+          {staff.map((worker,i)=>(
             <WorkerCard worker={worker} key={i}/>
           ))}
           </div>

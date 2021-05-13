@@ -39,7 +39,7 @@ function AddWorker(props) {
         date: new Date(values.date).getTime(),
         salary: +values.salary
       };
-      props.onAddWorker(worker); 
+      props.onAddWorker(worker, handleClick) 
       handleClick();
     }
   });

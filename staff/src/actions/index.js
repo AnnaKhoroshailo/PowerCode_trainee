@@ -16,7 +16,22 @@ export const asyncAddWorker=(worker)=>dispatсh=> {
   })
 }
 export const asyncUpdateWorker=(id, worker)=>dispatсh=> {
-  axios.put(`${API}/${id}`, worker).then(response=>{
-    dispatсh({type: "UPDATE_LIST_STAFF", payload: response.data}); 
+  axios.put(`${API}/${id}`, worker)
+  .then((response)=>{
+    dispatсh({type: "UPDATE_WORKER", payload: response.data}); 
+  })
+  .catch(error => {
+    console.log(error.response);
+    dispatсh({type: "UPDATE_WORKER", payload: {id:+id,...worker}}); 
+  })
+}
+export const asyncDeleteWorker=(id, worker)=>dispatсh=> {
+  axios.delete(`${API}/${id}`)
+  .then((response)=>{
+    dispatсh({type: "DELETE_WORKER", payload: worker}); 
+  })
+  .catch(error => {
+    console.log(error.response);
+    dispatсh({type: "DELETE_WORKER", payload: worker}); 
   })
 }

@@ -3,7 +3,7 @@ import {asyncGetWorker} from "../actions/";
 import {asyncUpdateWorker} from "../actions/";
 
 import { useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
 import moment from "moment";
 
@@ -12,16 +12,21 @@ import * as Yup from "yup";
 
 import { Button } from 'react-bootstrap';
 
-function ChangeWorker(props) {
-  const {worker}=props;
-  useEffect(() => {
-    if(!worker) props.onLoadWorker(props.ownProperties.match.params.id);
-  }, [worker]);
+function ChangeWorker({ worker, onLoadWorker, onUpdateWorker}) {
+  const { id }=useParams();
 
-  const formik = useFormik({
+  useEffect(() => {
+    if(!worker) onLoadWorker(id);
+  });
+
+  const { setValues, ...formik } = useFormik({
     initialValues: {
-      ...worker,
-      date: worker?.date ? moment(`Date(${worker?.date})`).format('YYYY-MM-DD') : ''
+      name: "",
+      url: "",
+      position: "",
+      salary: "",
+      status: "",
+      date: ""
     },
     validationSchema: Yup.object({
       name: Yup.string()
@@ -45,16 +50,24 @@ function ChangeWorker(props) {
         date: new Date(values.date).getTime(),
         salary: +values.salary
       };
-      props.onUpdateWorker(worker.id,worker); 
+      onUpdateWorker(id,worker); 
       handleClick();
     }
   });
+
   useEffect(()=>{
-    formik.setValues({
-      ...worker,
-      date: worker?.date ? moment(`Date(${worker?.date})`).format('YYYY-MM-DD') : ''
-    })
-  }, [worker]);
+    if(worker){
+      setValues({
+        name: worker.name,
+        url: worker.url,
+        position: worker.position,
+        salary: `${worker.salary}`,
+        status: worker.status,
+        date: moment(`Date(${worker.date})`).format('YYYY-MM-DD')
+      })
+    }
+  }, [worker, setValues]);
+  
   let history=useHistory();
   function handleClick() {
     history.push("/");
@@ -148,8 +161,7 @@ function ChangeWorker(props) {
 
 const mapStateToProps=(state, ownProperties)=>{
   return {
-    worker: state.staff.find(worker=>worker.id===+ownProperties.match.params.id),
-    ownProperties
+    worker: state.staff.find(worker=>worker.id===+ownProperties.match.params.id)
   };
 }
 const mapDispatchToProps=(dispatсh)=>{

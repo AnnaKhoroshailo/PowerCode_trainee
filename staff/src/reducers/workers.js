@@ -7,15 +7,16 @@ export default function staff(state=initialState, action) {
         ...state,
         action.payload
       ]
-    case "DELETE_WORKER":
-      return state.filter(worker=>worker.id !== action.payload);
-    case "FETCH_LIST_STAFF":
-      return action.payload;
-    case "UPDATE_LIST_STAFF":
+    case "UPDATE_WORKER":
+      console.log(action.payload)
       return [
         ...state.filter(worker=>worker.id !== action.payload.id),
         action.payload
       ]
+    case "DELETE_WORKER":
+      return state.filter(worker=>worker.id !== action.payload.id);
+    case "FETCH_LIST_STAFF":
+      return action.payload;
     default:
       return state;
   }

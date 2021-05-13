@@ -1,8 +1,13 @@
 import { Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import moment from "moment";
-
 import { useHistory } from 'react-router-dom';
+
+import {connect} from 'react-redux';
+
+import {asyncDeleteWorker} from "../actions/";
+
+import moment from "moment";
+import swal from 'sweetalert';
 
 function WorkerCard(props) {
   const {worker}=props;
@@ -11,15 +16,29 @@ function WorkerCard(props) {
   function handleClickEdit(id) {
     history.push(`/workers/${id}/edit`);
   }
+  function handleClickDelete(id,worker) {
+    swal({
+      title: "Вы уверены, что хотите удалить?",
+      text: "Сотрудник удалится!",
+      icon: "warning",
+      buttons: ["Отмена", "Удалить"],
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        props.onDeleteWorker(id,worker)
+      }
+    });
+  }
   return (
-    <div className="col-sm-6 col-md-3 mb-2">
+    <div className="col-sm-6 col-md-4 col-lg-3 mb-2">
       <Card bg="primary" text="white">
         <Card.Header>
           <div className="d-flex align-items-center justify-content-between">
             <Link to={`/workers/${worker?.id}`} className="card-link">{worker?.name}</Link>
             <div>
               <Button variant="secondary" className="card-button card-button-edit" onClick={()=>handleClickEdit(worker?.id)}>&#9998;</Button>
-              <Button variant="danger" className="card-button">&#10006;</Button>
+              <Button variant="danger" className="card-button" onClick={()=>handleClickDelete(worker?.id,worker)}>&#10006;</Button>
             </div>
           </div>
           <Card.Img variant="top" src={worker?.url} />
@@ -43,4 +62,12 @@ function WorkerCard(props) {
   );
 }
 
-export default WorkerCard;
+const mapDispatchToProps=(dispatсh)=>{
+  return {
+    onDeleteWorker: (id,worker)=>{
+      dispatсh(asyncDeleteWorker(id,worker));
+    } 
+  }
+}
+
+export default connect(null, mapDispatchToProps)(WorkerCard);
