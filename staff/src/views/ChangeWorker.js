@@ -1,8 +1,9 @@
-import {connect} from 'react-redux';
-import {asyncGetWorker} from "../actions/";
-import {asyncUpdateWorker} from "../actions/";
+import { asyncGetWorker } from "../actions/";
+import { asyncUpdateWorker } from "../actions/";
 
+import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
+
 import { useHistory, useParams } from 'react-router-dom';
 
 import moment from "moment";
@@ -12,12 +13,14 @@ import * as Yup from "yup";
 
 import { Button } from 'react-bootstrap';
 
-function ChangeWorker({ worker, onLoadWorker, onUpdateWorker}) {
+function ChangeWorker() {
   const { id }=useParams();
+  let worker = useSelector(state => state.staff.find(worker=>worker.id===Number(id)));
+  const dispatch=useDispatch();
 
   useEffect(() => {
-    if(!worker) onLoadWorker(id);
-  });
+    if(!worker) dispatch(asyncGetWorker(id));
+  }, [dispatch, worker, id]);
 
   const { setValues, ...formik } = useFormik({
     initialValues: {
@@ -50,7 +53,7 @@ function ChangeWorker({ worker, onLoadWorker, onUpdateWorker}) {
         date: new Date(values.date).getTime(),
         salary: +values.salary
       };
-      onUpdateWorker(id,worker); 
+      dispatch(asyncUpdateWorker(id,worker));
       handleClick();
     }
   });
@@ -66,7 +69,7 @@ function ChangeWorker({ worker, onLoadWorker, onUpdateWorker}) {
         date: moment(`Date(${worker.date})`).format('YYYY-MM-DD')
       })
     }
-  }, [worker, setValues]);
+  }, [dispatch, worker, id, setValues]);
   
   let history=useHistory();
   function handleClick() {
@@ -159,20 +162,4 @@ function ChangeWorker({ worker, onLoadWorker, onUpdateWorker}) {
   );
 }
 
-const mapStateToProps=(state, ownProperties)=>{
-  return {
-    worker: state.staff.find(worker=>worker.id===+ownProperties.match.params.id)
-  };
-}
-const mapDispatchToProps=(dispatсh)=>{
-  return {
-    onLoadWorker: (id)=>{
-      dispatсh(asyncGetWorker(id));
-    },
-    onUpdateWorker: (id,worker)=>{
-      dispatсh(asyncUpdateWorker(id,worker));
-    } 
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ChangeWorker);
+export default ChangeWorker;

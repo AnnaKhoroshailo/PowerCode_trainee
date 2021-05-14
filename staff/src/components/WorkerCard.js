@@ -2,15 +2,15 @@ import { Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 
-import {connect} from 'react-redux';
+import { useDispatch } from 'react-redux';
 
-import {asyncDeleteWorker} from "../actions/";
+import { asyncDeleteWorker } from "../actions/";
 
 import moment from "moment";
 import swal from 'sweetalert';
 
-function WorkerCard(props) {
-  const {worker}=props;
+function WorkerCard({worker}) {
+  const dispatch = useDispatch();
 
   let history=useHistory();
   function handleClickEdit(id) {
@@ -26,7 +26,7 @@ function WorkerCard(props) {
     })
     .then((willDelete) => {
       if (willDelete) {
-        props.onDeleteWorker(id,worker)
+        dispatch(asyncDeleteWorker(id,worker));
       }
     });
   }
@@ -62,12 +62,4 @@ function WorkerCard(props) {
   );
 }
 
-const mapDispatchToProps=(dispatсh)=>{
-  return {
-    onDeleteWorker: (id,worker)=>{
-      dispatсh(asyncDeleteWorker(id,worker));
-    } 
-  }
-}
-
-export default connect(null, mapDispatchToProps)(WorkerCard);
+export default WorkerCard;

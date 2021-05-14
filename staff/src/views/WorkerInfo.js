@@ -1,13 +1,18 @@
-import {connect} from 'react-redux';
 import {asyncGetWorker} from "../actions/";
+
 import moment from "moment";
 
+import { useParams } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 
-function WorkerInfo(props) {
-  const {worker}=props;
+function WorkerInfo() {
+  const { id }=useParams();
+  let worker = useSelector(state => state.staff.find(worker=>worker.id===Number(id)));
+  const dispatch=useDispatch();
+
   useEffect(() => {
-    if(!worker) props.onLoadWorker(props.ownProperties.match.params.id);
+    if(!worker) dispatch(asyncGetWorker(id));
   });
   return (
     <div className="Worker">
@@ -28,19 +33,5 @@ function WorkerInfo(props) {
     </div>
   );
 }
-const mapStateToProps=(state, ownProperties)=>{
-  return {
-    worker: state.staff.find(worker=>worker.id===+ownProperties.match.params.id),
-    ownProperties
-  };
-}
 
-const mapDispatchToProps=(dispatсh)=>{
-  return {
-    onLoadWorker: (id)=>{
-      dispatсh(asyncGetWorker(id));
-    } 
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(WorkerInfo);
+export default WorkerInfo;

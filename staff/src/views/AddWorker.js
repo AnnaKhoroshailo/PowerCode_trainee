@@ -1,6 +1,7 @@
-import {connect} from 'react-redux';
 import {asyncAddWorker} from "../actions/";
 import { useHistory } from 'react-router-dom';
+
+import { useDispatch } from 'react-redux';
 
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -8,6 +9,8 @@ import * as Yup from "yup";
 import { Button } from 'react-bootstrap';
 
 function AddWorker(props) {
+  const dispatch = useDispatch();
+
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -39,7 +42,7 @@ function AddWorker(props) {
         date: new Date(values.date).getTime(),
         salary: +values.salary
       };
-      props.onAddWorker(worker, handleClick) 
+      dispatch(asyncAddWorker(worker), handleClick);
       handleClick();
     }
   });
@@ -135,12 +138,4 @@ function AddWorker(props) {
   );
 }
 
-const mapDispatchToProps=(dispatсh)=>{
-  return {
-    onAddWorker: (worker)=>{
-      dispatсh(asyncAddWorker(worker));
-    } 
-  }
-}
-
-export default connect(null, mapDispatchToProps)(AddWorker);
+export default AddWorker;

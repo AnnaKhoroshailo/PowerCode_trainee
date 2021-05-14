@@ -4,15 +4,20 @@ import WorkerCard from './components/WorkerCard.js';
 import { useHistory } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 
-import { connect } from "react-redux";
 import { asyncGetStaff } from "./actions/"; 
+
+import { useSelector, useDispatch } from 'react-redux';
 
 import { useEffect } from 'react';
 
-function App({onLoadStaff, staff}) {
+function App() {
+  const staff = useSelector(state => state.staff);
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    onLoadStaff();
-  }, [onLoadStaff]);
+    dispatch(asyncGetStaff());
+  }, [dispatch]);
+
   let history=useHistory();
   function handleClick() {
     history.push("/add");
@@ -33,15 +38,4 @@ function App({onLoadStaff, staff}) {
   );
 }
 
-const mapStateToProps = state => {
-  return {
-    staff: state.staff
-  }
-}
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onLoadStaff: ()=>{dispatch(asyncGetStaff())}
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
