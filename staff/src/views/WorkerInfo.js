@@ -10,9 +10,24 @@ function WorkerInfo() {
   const { id }=useParams();
   let worker = useSelector(state => state.staff.find(worker=>worker.id===Number(id)));
   const dispatch=useDispatch();
+  let colorStatus='';
 
+  switch (worker?.status) {
+    case "Работает":
+      colorStatus='green';
+      break;
+    case "В отпуске":
+      colorStatus='yellow';
+      break;
+    case "Уволен":
+      colorStatus='red';
+      break;
+    default:
+      colorStatus='';
+  }
+  
   useEffect(() => {
-    if(!worker) dispatch(asyncGetWorker(id));
+    if(!worker) dispatch(asyncGetWorker(id));   
   });
   return (
     <div className="Worker">
@@ -22,7 +37,7 @@ function WorkerInfo() {
             <h1>{worker?.name}</h1>
             <p>Должность: <span className="worker-text">{worker?.position}</span> </p>
             <p>Зарплата: <span className="worker-text">{worker?.salary} $</span></p>
-            <p>Статус:  <span className="worker-text">{worker?.status}</span></p>
+            <p>Статус:  <span className="worker-text" style={{color: colorStatus}}>{worker?.status}</span></p>
             <p>Дата начала работы: <span className="worker-text">{moment(`Date(${worker?.date})`).locale('ru').format('DD/MM/YYYY')}</span></p>
           </div>
           <div className="col-sm-6">

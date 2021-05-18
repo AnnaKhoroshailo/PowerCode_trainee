@@ -10,6 +10,22 @@ import moment from "moment";
 import swal from 'sweetalert';
 
 function WorkerCard({worker}) {
+  let colorStatus='';
+  
+  switch (worker?.status) {
+    case "Работает":
+      colorStatus='green';
+      break;
+    case "В отпуске":
+      colorStatus='yellow';
+      break;
+    case "Уволен":
+      colorStatus='red';
+      break;
+    default:
+      colorStatus='';
+  }
+
   const dispatch = useDispatch();
 
   let history=useHistory();
@@ -51,7 +67,7 @@ function WorkerCard({worker}) {
             Зарплата: <span className="worker-text">{worker?.salary} $</span>
           </Card.Text>
           <Card.Text>
-            Статус: <span className="worker-text">{worker?.status}</span>
+            Статус: <span className="worker-text" style={{color: colorStatus}}>{worker?.status}</span>
           </Card.Text>
           <Card.Text>
             Дата начала работы: <span className="worker-text">{moment(`Date(${worker?.date})`).locale('ru').format('DD/MM/YYYY')}</span>

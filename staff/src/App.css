@@ -44,16 +44,16 @@ section {
 .form-elem {
   margin-bottom: 20px;
 }
-.form-elem input, .form-elem input:focus, .form-control, .form-control:focus {
+.form-elem input, .form-elem input:focus, .form-elem select, .form-elem select:focus, .form-control, .form-control:focus {
   border: 1px solid #0d6efd;
   padding: 5px;
   border-radius: .25rem;
 }
-.form-elem input:focus, .form-control:focus {
+.form-elem input:focus, .form-elem select:focus, .form-control:focus {
   box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
   outline: none;
 }
-.form-elem input, .search-reset {
+.form-elem input, .form-elem select, .search-reset {
   margin-left: 5px;
 }
 .search-input {

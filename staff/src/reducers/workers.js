@@ -8,7 +8,6 @@ export default function staff(state=initialState, action) {
         action.payload
       ]
     case "UPDATE_WORKER":
-      console.log(action.payload)
       return [
         ...state.filter(worker=>worker.id !== action.payload.id),
         action.payload

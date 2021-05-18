@@ -106,7 +106,7 @@ function ChangeWorker() {
             )}
           </div>
           <div className="form-elem">
-            <label>Должность </label>
+            <label>Должность</label>
             <input
               type="text"
               name="position"
@@ -118,7 +118,7 @@ function ChangeWorker() {
             )}
           </div>
           <div className="form-elem">
-            <label>Зарплата </label>
+            <label>Зарплата</label>
             <input
               type="text"
               name="salary"
@@ -130,19 +130,18 @@ function ChangeWorker() {
             )}
           </div>
           <div className="form-elem">
-            <label>Статус </label>
-            <input
-              type="text"
-              name="status"
-              value={formik.values.status}
-              onChange={formik.handleChange} 
-            />
+            <label>Статус</label>
+            <select name="status" value={formik.values.status} onChange={formik.handleChange} >
+              <option value="Работает">Работает</option>
+              <option value="В отпуске">В отпуске</option>
+              <option value="Уволен">Уволен</option>
+            </select>
             {formik.errors.status && formik.touched.status && (
               <p className="form-error">{formik.errors.status}</p>
             )}
           </div>
           <div className="form-elem">
-            <label>Дата начала работы </label>
+            <label>Дата начала работы</label>
             <input
               type="date"
               name="date"
