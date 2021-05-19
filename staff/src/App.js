@@ -1,6 +1,7 @@
 import './App.css';
 import WorkerCard from './components/WorkerCard.js';
 import WorkersSearch from './components/WorkersSearch.js';
+import WorkersByStatus from './components/WorkersByStatus.js';
 
 import { useHistory } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
@@ -14,7 +15,8 @@ import swal from 'sweetalert';
 
 function App() {
   const searchWorkers = useSelector(state => state.searchWorkers);
-  const staff = useSelector(state => state.staff.filter(worker=>worker.name.toLowerCase().includes(searchWorkers.toLowerCase())));
+  const statusWorkers = useSelector(state => state.statusWorkers);
+  const staff = useSelector(state => state.staff.filter(worker=>worker.name.toLowerCase().includes(searchWorkers.toLowerCase()))).filter(worker=>statusWorkers.indexOf(worker.status)!==-1);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -39,8 +41,9 @@ function App() {
           <div className="col-md-6">
             <Button onClick={handleClick}>Добавить нового сотрудника</Button>
           </div>
-          <div className="col-md-6 d-flex md-justify-content-end">
+          <div className="col-md-6 d-flex flex-wrap md-justify-content-end">
             <WorkersSearch/>
+            <WorkersByStatus/>
           </div>
         </div> 
         

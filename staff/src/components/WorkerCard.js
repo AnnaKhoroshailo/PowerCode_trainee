@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import { asyncDeleteWorker } from "../actions/";
+import {STATUS} from '../constants/workerStatus.js';
 
 import moment from "moment";
 import swal from 'sweetalert';
@@ -13,13 +14,13 @@ function WorkerCard({worker}) {
   let colorStatus='';
   
   switch (worker?.status) {
-    case "Работает":
+    case STATUS.work:
       colorStatus='green';
       break;
-    case "В отпуске":
-      colorStatus='yellow';
+    case STATUS.vacation:
+      colorStatus='orange';
       break;
-    case "Уволен":
+    case STATUS.fired:
       colorStatus='red';
       break;
     default:
@@ -67,7 +68,7 @@ function WorkerCard({worker}) {
             Зарплата: <span className="worker-text">{worker?.salary} $</span>
           </Card.Text>
           <Card.Text>
-            Статус: <span className="worker-text" style={{color: colorStatus}}>{worker?.status}</span>
+            Статус: <span className="worker-text worker-status" style={{background: colorStatus}}>{worker?.status}</span>
           </Card.Text>
           <Card.Text>
             Дата начала работы: <span className="worker-text">{moment(`Date(${worker?.date})`).locale('ru').format('DD/MM/YYYY')}</span>

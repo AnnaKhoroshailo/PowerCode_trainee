@@ -19,6 +19,11 @@ section {
 .card-text .worker-text {
   color: #fff;
 }
+.worker-status, .card-text .worker-status {
+  display: inline-block;
+  border-radius: 20px;
+  padding: 3px 7px;
+}
 .card-link {
   color: #fff;
   text-transform: uppercase;
@@ -58,6 +63,9 @@ section {
 }
 .search-input {
   margin-right: 5px;
+}
+.form-check-inline:last-child {
+  margin-right: 0;
 }
 @media all and (min-width: 768px) {
   .md-justify-content-end {

@@ -1,6 +1,6 @@
 import { Button, Form, Navbar, FormControl } from 'react-bootstrap';
 
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import debounce from 'lodash.debounce';
 
 import { useDispatch } from 'react-redux';
@@ -17,6 +17,7 @@ function WorkersSearch() {
   }, 1000)
 
   function handleClickReset() {
+    searchInput.current.value='';
     dispatch({type: "SEARCH_WORKERS", payload: ''});
   }
 
