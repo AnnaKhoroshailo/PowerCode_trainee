@@ -1,14 +1,14 @@
-import {asyncAddWorker} from "../actions/";
-import { useHistory } from 'react-router-dom';
+import { asyncAddWorker } from "../actions/";
+import { useHistory } from "react-router-dom";
 
-import { useDispatch } from 'react-redux';
+import { useDispatch } from "react-redux";
 
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
-import { Button } from 'react-bootstrap';
+import { Button } from "react-bootstrap";
 
-function AddWorker(props) {
+function AddWorker() {
   const dispatch = useDispatch();
 
   const formik = useFormik({
@@ -18,36 +18,30 @@ function AddWorker(props) {
       position: "",
       salary: "",
       status: "",
-      date: ""
+      date: "",
     },
     validationSchema: Yup.object({
-      name: Yup.string()
-        .required("Обязательно!"),
-      url: Yup.string()
-        .required("Обязательно!"),
-      position: Yup.string()
-        .required("Обязательно!"),
-      salary: Yup.number()
-        .typeError('Введите число!')
-        .required("Обязательно!"),
-      status: Yup.string()
-        .required("Обязательно!"),
+      name: Yup.string().required("Обязательно!"),
+      url: Yup.string().required("Обязательно!"),
+      position: Yup.string().required("Обязательно!"),
+      salary: Yup.number().typeError("Введите число!").required("Обязательно!"),
+      status: Yup.string().required("Обязательно!"),
       date: Yup.date()
         .max(new Date(), "Дата превышает текущую!")
-        .required("Обязательно!")
+        .required("Обязательно!"),
     }),
-    onSubmit: values => {
-      let worker={
+    onSubmit: (values) => {
+      let worker = {
         ...values,
         date: new Date(values.date).getTime(),
-        salary: +values.salary
+        salary: +values.salary,
       };
       dispatch(asyncAddWorker(worker), handleClick);
       handleClick();
-    }
+    },
   });
 
-  let history=useHistory();
+  let history = useHistory();
   function handleClick() {
     history.push("/");
   }
@@ -63,19 +57,19 @@ function AddWorker(props) {
               type="text"
               name="name"
               value={formik.values.name}
-              onChange={formik.handleChange} 
+              onChange={formik.handleChange}
             />
             {formik.errors.name && formik.touched.name && (
               <p className="form-error">{formik.errors.name}</p>
             )}
           </div>
-          <div  className="form-elem">
-            <label>URL картинки</label> 
+          <div className="form-elem">
+            <label>URL картинки</label>
             <input
               type="text"
               name="url"
               value={formik.values.url}
-              onChange={formik.handleChange} 
+              onChange={formik.handleChange}
             />
             {formik.errors.url && formik.touched.url && (
               <p className="form-error">{formik.errors.url}</p>
@@ -87,7 +81,7 @@ function AddWorker(props) {
               type="text"
               name="position"
               value={formik.values.position}
-              onChange={formik.handleChange} 
+              onChange={formik.handleChange}
             />
             {formik.errors.position && formik.touched.position && (
               <p className="form-error">{formik.errors.position}</p>
@@ -107,7 +101,11 @@ function AddWorker(props) {
           </div>
           <div className="form-elem">
             <label>Статус</label>
-            <select name="status" value={formik.values.status} onChange={formik.handleChange} >
+            <select
+              name="status"
+              value={formik.values.status}
+              onChange={formik.handleChange}
+            >
               <option value="">Выберите статус</option>
               <option value="Работает">Работает</option>
               <option value="В отпуске">В отпуске</option>
@@ -123,7 +121,7 @@ function AddWorker(props) {
               type="date"
               name="date"
               value={formik.values.date}
-              onChange={formik.handleChange} 
+              onChange={formik.handleChange}
             />
             {formik.errors.date && formik.touched.date && (
               <p className="form-error">{formik.errors.date}</p>

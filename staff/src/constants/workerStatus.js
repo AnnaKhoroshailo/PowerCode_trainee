@@ -1,5 +1,5 @@
 export const STATUS = {
-    work: "Работает",
-    vacation: "В отпуске",
-    fired: "Уволен"
-}
+  work: "Работает",
+  vacation: "В отпуске",
+  fired: "Уволен",
+};

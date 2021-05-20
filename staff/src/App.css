@@ -6,6 +6,9 @@
 img {
   width: 100%;
 }
+.text-right {
+  text-align: right;
+}
 h1 {
   margin-bottom: 20px;
   text-align: center;
@@ -19,7 +22,8 @@ section {
 .card-text .worker-text {
   color: #fff;
 }
-.worker-status, .card-text .worker-status {
+.worker-status,
+.card-text .worker-status {
   display: inline-block;
   border-radius: 20px;
   padding: 3px 7px;
@@ -49,16 +53,25 @@ section {
 .form-elem {
   margin-bottom: 20px;
 }
-.form-elem input, .form-elem input:focus, .form-elem select, .form-elem select:focus, .form-control, .form-control:focus {
+.form-elem input,
+.form-elem input:focus,
+.form-elem select,
+.form-elem select:focus,
+.form-control,
+.form-control:focus {
   border: 1px solid #0d6efd;
   padding: 5px;
-  border-radius: .25rem;
+  border-radius: 0.25rem;
 }
-.form-elem input:focus, .form-elem select:focus, .form-control:focus {
+.form-elem input:focus,
+.form-elem select:focus,
+.form-control:focus {
   box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
   outline: none;
 }
-.form-elem input, .form-elem select, .search-reset {
+.form-elem input,
+.form-elem select,
+.search-reset {
   margin-left: 5px;
 }
 .search-input {
@@ -66,6 +79,10 @@ section {
 }
 .form-check-inline:last-child {
   margin-right: 0;
+}
+.sort-button {
+  padding: 2px 5px;
+  margin: 5px;
 }
 @media all and (min-width: 768px) {
   .md-justify-content-end {
