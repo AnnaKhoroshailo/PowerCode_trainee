@@ -3,6 +3,7 @@ import WorkerCard from "./components/WorkerCard.js";
 import WorkersSearch from "./components/WorkersSearch.js";
 import WorkersByStatus from "./components/WorkersByStatus.js";
 import WorkersSort from "./components/WorkersSort.js";
+import PriceRange from "./components/PriceRange.js";
 
 import { useHistory } from "react-router-dom";
 import { Button } from "react-bootstrap";
@@ -17,11 +18,20 @@ import swal from "sweetalert";
 function App() {
   const searchWorkers = useSelector((state) => state.searchWorkers);
   const statusWorkers = useSelector((state) => state.statusWorkers);
+  const minSalary = useSelector((state) => state.salaryWorkers.minSalary);
+  const maxSalary = useSelector((state) => state.salaryWorkers.maxSalary);
   const staff = useSelector((state) =>
-    state.staff.filter((worker) =>
-      worker.name.toLowerCase().includes(searchWorkers.toLowerCase())
-    )
-  ).filter((worker) => statusWorkers.indexOf(worker.status) !== -1);
+    state.staff
+      .filter((worker) =>
+        worker.name.toLowerCase().includes(searchWorkers.toLowerCase())
+      )
+
+      .filter((worker) => statusWorkers.indexOf(worker.status) !== -1)
+
+      .filter((worker) => {
+        return minSalary <= worker.salary && worker.salary <= maxSalary;
+      })
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -33,6 +43,12 @@ function App() {
       swal(
         "Сотрудников с таким именем не найдено",
         "Проверьте правильность данных!",
+        "error"
+      );
+    if (minSalary && maxSalary && staff.length === 0)
+      swal(
+        "Сотрудников с такой зарплатой не найдено",
+        "Повторите попытку!",
         "error"
       );
   }, [searchWorkers, staff]);
@@ -48,10 +64,13 @@ function App() {
         <h1>Сотрудники</h1>
 
         <div className="row mt-4 align-items-center">
-          <div className="col-md-6">
+          <div className="col-md-3">
             <Button onClick={handleClick}>Добавить нового сотрудника</Button>
           </div>
-          <div className="col-md-6 d-flex flex-wrap md-justify-content-end">
+          <div className="col-md-5">
+            <PriceRange />
+          </div>
+          <div className="col-md-4 d-flex flex-wrap md-justify-content-end">
             <WorkersSearch />
             <WorkersByStatus />
           </div>
