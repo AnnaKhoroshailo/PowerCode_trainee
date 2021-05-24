@@ -1,4 +1,5 @@
 import "./App.css";
+
 import WorkerCard from "./components/WorkerCard.js";
 import WorkersSearch from "./components/WorkersSearch.js";
 import WorkersByStatus from "./components/WorkersByStatus.js";
@@ -6,7 +7,7 @@ import WorkersSort from "./components/WorkersSort.js";
 import PriceRange from "./components/PriceRange.js";
 
 import { useHistory } from "react-router-dom";
-import { Button } from "react-bootstrap";
+import Button from "./components/Button";
 
 import { asyncGetStaff } from "./actions/";
 
@@ -54,24 +55,30 @@ function App() {
   }, [searchWorkers, staff]);
 
   let history = useHistory();
-  function handleClick() {
+  function handleClickAdd() {
     history.push("/add");
   }
 
   return (
     <div className="App">
       <section className="container">
-        <h1>Сотрудники</h1>
+        <div className="row">
+          <div className="col-12">
+            <WorkersSearch />
+          </div>
+        </div>
 
         <div className="row mt-4 align-items-center">
           <div className="col-md-3">
-            <Button onClick={handleClick}>Добавить нового сотрудника</Button>
+            <Button
+              handleClick={handleClickAdd}
+              label="Добавить нового сотрудника"
+            />
           </div>
           <div className="col-md-5">
             <PriceRange />
           </div>
           <div className="col-md-4 d-flex flex-wrap md-justify-content-end">
-            <WorkersSearch />
             <WorkersByStatus />
           </div>
         </div>

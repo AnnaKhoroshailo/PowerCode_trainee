@@ -1,4 +1,4 @@
-import { Button, Form, Navbar, FormControl } from "react-bootstrap";
+import { Form, Navbar, FormControl } from "react-bootstrap";
 
 import { useRef } from "react";
 import debounce from "lodash.debounce";
@@ -36,17 +36,17 @@ function PriceRange() {
       );
   }, 1000);
 
-  function handleClickReset() {
-    minInput.current.value = "";
-    maxInput.current.value = "";
-    dispatch({
-      type: "SALARY_WORKERS",
-      payload: {
-        minSalary: 0,
-        maxSalary: Infinity,
-      },
-    });
-  }
+  // function handleClickReset() {
+  //   minInput.current.value = "";
+  //   maxInput.current.value = "";
+  //   dispatch({
+  //     type: "SALARY_WORKERS",
+  //     payload: {
+  //       minSalary: 0,
+  //       maxSalary: Infinity,
+  //     },
+  //   });
+  // }
 
   return (
     <div>
@@ -66,13 +66,13 @@ function PriceRange() {
             ref={maxInput}
             onChange={handleChange}
           />
-          <Button
+          {/* <Button
             type="button"
             className="search-reset"
             onClick={handleClickReset}
           >
             Отмена
-          </Button>
+          </Button> */}
         </Form>
       </Navbar>
     </div>

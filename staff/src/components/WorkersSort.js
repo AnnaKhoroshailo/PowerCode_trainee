@@ -1,4 +1,4 @@
-import { Button } from "react-bootstrap";
+import Button from "./Button";
 
 import { useSelector, useDispatch } from "react-redux";
 
@@ -59,54 +59,18 @@ function WorkersSort() {
     <div className="row mt-4">
       <div className="col-4">
         <span>По имени</span>
-        <Button
-          type="button"
-          className="sort-button"
-          onClick={handleClickNameAscend}
-        >
-          &#5123;
-        </Button>
-        <Button
-          type="button"
-          className="sort-button"
-          onClick={handleClickNameDescend}
-        >
-          &#5121;
-        </Button>
+        <Button label="&#5123;" handleClick={handleClickNameAscend} />
+        <Button label="&#5121;" handleClick={handleClickNameDescend} />
       </div>
       <div className="col-4 text-center">
         <span>По началу работы</span>
-        <Button
-          type="button"
-          className="sort-button"
-          onClick={handleClickDateAscend}
-        >
-          &#5123;
-        </Button>
-        <Button
-          type="button"
-          className="sort-button"
-          onClick={handleClickDateDescend}
-        >
-          &#5121;
-        </Button>
+        <Button label="&#5123;" handleClick={handleClickDateAscend} />
+        <Button label="&#5121;" handleClick={handleClickDateDescend} />
       </div>
       <div className="col-4 text-right">
         <span>По зарплате</span>
-        <Button
-          type="button"
-          className="sort-button"
-          onClick={handleClickSalaryAscend}
-        >
-          &#5123;
-        </Button>
-        <Button
-          type="button"
-          className="sort-button"
-          onClick={handleClickSalaryDescend}
-        >
-          &#5121;
-        </Button>
+        <Button label="&#5123;" handleClick={handleClickSalaryAscend} />
+        <Button label="&#5121;" handleClick={handleClickSalaryDescend} />
       </div>
     </div>
   );

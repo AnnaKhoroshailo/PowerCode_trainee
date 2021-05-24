@@ -1,0 +1,33 @@
+.btn {
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+  padding: 13px 27px;
+  background: #73b469;
+  color: #fff;
+}
+.btn:hover,
+.btn:disabled {
+  background: #679f5e;
+}
+.btn--warning {
+  background: #e4a648;
+}
+.btn--warning:hover,
+.btn--warning:disabled {
+  background: #ce9744;
+}
+.btn--error {
+  background: #c05e5e;
+}
+.btn--error:hover,
+.btn--error:disabled {
+  background: #ac5555;
+}
+.btn--small {
+  border-radius: 5px;
+  padding: 5px;
+}
+.btn:disabled {
+  color: #333;
+}

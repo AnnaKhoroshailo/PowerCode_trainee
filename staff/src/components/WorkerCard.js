@@ -1,4 +1,7 @@
-import { Button, Card } from "react-bootstrap";
+import imgEdit from "../images/edit.svg";
+import imgDelete from "../images/delete.svg";
+
+import Button from "./Button";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
@@ -15,13 +18,13 @@ function WorkerCard({ worker }) {
 
   switch (worker?.status) {
     case STATUS.work:
-      colorStatus = "green";
+      colorStatus = "#73B469";
       break;
     case STATUS.vacation:
-      colorStatus = "orange";
+      colorStatus = "#E4A648";
       break;
     case STATUS.fired:
-      colorStatus = "red";
+      colorStatus = "#C05E5E";
       break;
     default:
       colorStatus = "";
@@ -48,57 +51,35 @@ function WorkerCard({ worker }) {
   }
   return (
     <div className="col-sm-6 col-md-4 col-lg-3 mb-2">
-      <Card bg="primary" text="white">
-        <Card.Header>
-          <div className="d-flex align-items-center justify-content-between">
-            <Link to={`/workers/${worker?.id}`} className="card-link">
-              {worker?.name}
-            </Link>
-            <div>
-              <Button
-                variant="secondary"
-                className="card-button card-button-edit"
-                onClick={() => handleClickEdit(worker?.id)}
-              >
-                &#9998;
-              </Button>
-              <Button
-                variant="danger"
-                className="card-button"
-                onClick={() => handleClickDelete(worker?.id, worker)}
-              >
-                &#10006;
-              </Button>
-            </div>
-          </div>
-          <Card.Img variant="top" src={worker?.url} />
-        </Card.Header>
-        <Card.Body>
-          <Card.Text>
-            Должность: <span className="worker-text">{worker?.position}</span>
-          </Card.Text>
-          <Card.Text>
-            Зарплата: <span className="worker-text">{worker?.salary} $</span>
-          </Card.Text>
-          <Card.Text>
-            Статус:{" "}
-            <span
-              className="worker-text worker-status"
-              style={{ background: colorStatus }}
-            >
-              {worker?.status}
-            </span>
-          </Card.Text>
-          <Card.Text>
-            Дата начала работы:{" "}
-            <span className="worker-text">
-              {moment(`Date(${worker?.date})`)
-                .locale("ru")
-                .format("DD/MM/YYYY")}
-            </span>
-          </Card.Text>
-        </Card.Body>
-      </Card>
+      <div className="card">
+        <div className="d-flex align-items-center justify-content-between">
+          <Button
+            warning
+            smallSize
+            label={<img src={imgEdit} alt="Редактировать" />}
+            handleClick={() => handleClickEdit(worker?.id)}
+          />
+          <Button
+            error
+            smallSize
+            label={<img src={imgDelete} alt="Удалить" />}
+            handleClick={() => handleClickDelete(worker?.id, worker)}
+          />
+        </div>
+        <img src={worker?.url} className="card__img" />
+        <Link to={`/workers/${worker?.id}`} className="card__name">
+          {worker?.firstName}
+        </Link>
+        <div className="card__lastname">{worker?.lastName}</div>
+        <div className="card__position">{worker?.position}</div>
+        <div className="card__salary">{worker?.salary} $</div>
+        <div className="card__status" style={{ background: colorStatus }}>
+          {worker?.status}
+        </div>
+        <div className="card__date">
+          {moment(`Date(${worker?.date})`).locale("ru").format("DD/MM/YYYY")}
+        </div>
+      </div>
     </div>
   );
 }
