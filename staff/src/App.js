@@ -24,7 +24,7 @@ function App() {
   const staff = useSelector((state) =>
     state.staff
       .filter((worker) =>
-        worker.name.toLowerCase().includes(searchWorkers.toLowerCase())
+        worker.firstName.toLowerCase().includes(searchWorkers.toLowerCase())
       )
 
       .filter((worker) => statusWorkers.indexOf(worker.status) !== -1)

@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 
 function Input(props) {
   const dispatch = useDispatch();
-  let input = useRef(null);
+  const inputRef = useRef(null);
   let inputClass = "input-text";
   if (props.search) inputClass += " input-text--search";
   let handleChange = "";
@@ -16,7 +16,7 @@ function Input(props) {
       handleChange = debounce(() => {
         dispatch({
           type: "SEARCH_WORKERS",
-          payload: input.current.value,
+          payload: inputRef.current.value,
         });
       }, 1000);
       break;
@@ -26,7 +26,7 @@ function Input(props) {
     <input
       type={props.type}
       placeholder={props.placeholder}
-      ref={input}
+      ref={inputRef}
       className={inputClass}
       onChange={handleChange}
     />

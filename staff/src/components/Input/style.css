@@ -3,7 +3,7 @@
   border-radius: 15px;
   outline: none;
   border: none;
-  text-transform: capitalize;
+  text-transform: none;
   padding: 7px 15px;
 }
 .input-text--search {
