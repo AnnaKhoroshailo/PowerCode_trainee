@@ -1,0 +1,46 @@
+.card {
+  background: #2d2f44;
+  border-radius: 13px;
+  color: #fff;
+  padding: 20px 22px;
+}
+.pos-abs {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.74);
+}
+.card__img {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  margin: 0 auto;
+  display: block;
+}
+.card__name {
+  font-size: 18px;
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  margin-top: 24px;
+}
+.card__lastname {
+  font-size: 24px;
+}
+.card__position {
+  font-size: 14px;
+  margin: 19px 0;
+}
+.card__salary {
+  font-size: 24px;
+}
+.card__date {
+  text-align: center;
+  margin-top: 63px;
+  font-size: 16px;
+}

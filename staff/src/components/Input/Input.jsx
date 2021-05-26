@@ -5,7 +5,7 @@ function Input(props) {
   if (props.search) inputClass += " input-text--search";
   return (
     <input
-      type={props.type}
+      type="text"
       name={props.name}
       placeholder={props.placeholder}
       className={inputClass}

@@ -1,6 +1,8 @@
-import { Form } from "react-bootstrap";
+import "./style.css";
 
-import { STATUS } from "../constants/workerStatus.js";
+import Checkbox from "../Checkbox";
+
+import { STATUS } from "../../constants/workerStatus.js";
 
 import { useDispatch } from "react-redux";
 
@@ -10,7 +12,7 @@ function WorkersByStatus() {
   const dispatch = useDispatch();
   const statusForm = useRef(null);
 
-  function handleChange() {
+  function handleChangeCheck() {
     const checkboxs = statusForm.current.status;
     const checkboxArray = Array.prototype.slice.call(checkboxs);
     const uncheckedCheckboxes = checkboxArray.filter(
@@ -36,29 +38,32 @@ function WorkersByStatus() {
   }
 
   return (
-    <Form ref={statusForm}>
-      <Form.Check
-        inline
-        label={STATUS.work}
-        name="status"
-        value={STATUS.work}
-        onChange={handleChange}
-      />
-      <Form.Check
-        inline
-        label={STATUS.vacation}
-        name="status"
-        value={STATUS.vacation}
-        onChange={handleChange}
-      />
-      <Form.Check
-        inline
-        label={STATUS.fired}
-        name="status"
-        value={STATUS.fired}
-        onChange={handleChange}
-      />
-    </Form>
+    <div className="status-filter">
+      <h3>Статус</h3>
+      <form ref={statusForm}>
+        <Checkbox
+          name="status"
+          value={STATUS.work}
+          handleChange={handleChangeCheck}
+        >
+          {STATUS.work}
+        </Checkbox>
+        <Checkbox
+          name="status"
+          value={STATUS.vacation}
+          handleChange={handleChangeCheck}
+        >
+          {STATUS.vacation}
+        </Checkbox>
+        <Checkbox
+          name="status"
+          value={STATUS.fired}
+          handleChange={handleChangeCheck}
+        >
+          {STATUS.fired}
+        </Checkbox>
+      </form>
+    </div>
   );
 }
 

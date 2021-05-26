@@ -1,5 +1,7 @@
-import imgSearch from "../images/search.svg";
-import Input from "./Input";
+import imgSearch from "../../images/search.svg";
+import "./style.css";
+
+import Input from "../Input";
 import debounce from "lodash.debounce";
 
 import { useDispatch } from "react-redux";

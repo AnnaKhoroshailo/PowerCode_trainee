@@ -1,6 +1,7 @@
 .btn {
   border-radius: 15px;
   border: none;
+  outline: none;
   cursor: pointer;
   padding: 13px 27px;
   background: #73b469;
@@ -28,7 +29,8 @@
   border-radius: 5px;
   padding: 5px;
 }
-.btn--add {
+.btn--add,
+.btn--add:hover {
   background-image: url(../../images/add.svg);
   background-repeat: no-repeat;
   background-position: 19px center;

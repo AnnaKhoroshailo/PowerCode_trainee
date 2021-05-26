@@ -1,0 +1,19 @@
+.search {
+  position: relative;
+  margin-top: 48px;
+}
+.search__img {
+  position: absolute;
+  right: 15px;
+  top: 13px;
+}
+.search:after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  border-right: 63px solid #2d2f44;
+  border-radius: 0 25px 25px 0;
+  z-index: -1;
+}

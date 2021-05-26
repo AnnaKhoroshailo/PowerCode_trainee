@@ -1,0 +1,19 @@
+.wrap {
+  position: relative;
+  transform: translateX(0);
+}
+.container--main {
+  width: 70%;
+}
+@media (min-width: 768px) {
+  .container--main {
+    margin-right: 20%;
+  }
+}
+aside {
+  width: 20%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 0 46px;
+}

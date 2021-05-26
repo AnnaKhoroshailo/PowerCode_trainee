@@ -1,0 +1,10 @@
+.salary-filter {
+  background: #2d2f44;
+  border-radius: 10px;
+  color: #fdf1f1;
+  padding: 26px 17px;
+}
+.salary-filter .input-text {
+  width: 45%;
+  margin-top: 17px;
+}

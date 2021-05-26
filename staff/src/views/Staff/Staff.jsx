@@ -1,22 +1,22 @@
-import "./App.css";
+import "./index.css";
 
-import WorkerCard from "./components/WorkerCard.js";
-import WorkersSearch from "./components/WorkersSearch.js";
-import WorkersByStatus from "./components/WorkersByStatus.js";
-import WorkersSort from "./components/WorkersSort.js";
-import SalaryRange from "./components/SalaryRange.js";
+import WorkerCard from "../../components/WorkerCard";
+import WorkersSearch from "../../components/WorkersSearch";
+import WorkersByStatus from "../../components/WorkersByStatus";
+import WorkersSort from "../../components/WorkersSort";
+import SalaryRange from "../../components/SalaryRange";
 
 import { useHistory } from "react-router-dom";
-import Button from "./components/Button";
+import Button from "../../components/Button";
 
-import { asyncGetStaff } from "./actions/";
+import { asyncGetStaff } from "../../actions";
 
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 
 import swal from "sweetalert";
 
-function App() {
+function Staff() {
   const searchWorkers = useSelector((state) => state.searchWorkers);
   const statusWorkers = useSelector((state) => state.statusWorkers);
   const minSalary = useSelector((state) => state.salaryWorkers.minSalary);
@@ -70,7 +70,7 @@ function App() {
           </div>
 
           <div className="row mt-4 align-items-center">
-            <div className="col-md-6 col-lg-3">
+            <div className="col-12">
               <Button add handleClick={handleClickAdd}>
                 Добавить сотрудника
               </Button>
@@ -78,22 +78,22 @@ function App() {
           </div>
         </div>
       </section>
-      <section>
+      <section className="wrap">
         <div className="container container--main">
           <div className="row mt-4">
             {staff.map((worker, i) => (
               <WorkerCard worker={worker} key={i} />
             ))}
           </div>
-          <aside>
-            <WorkersSort />
-            <WorkersByStatus />
-            <SalaryRange />
-          </aside>
         </div>
+        <aside className="d-none d-md-block">
+          <WorkersSort />
+          <WorkersByStatus />
+          <SalaryRange />
+        </aside>
       </section>
     </div>
   );
 }
 
-export default App;
+export default Staff;

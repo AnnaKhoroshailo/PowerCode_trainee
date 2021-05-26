@@ -1,4 +1,5 @@
-import Select from "./Select";
+import Select from "../Select";
+import "./style.css";
 
 import { useSelector, useDispatch } from "react-redux";
 
@@ -57,7 +58,7 @@ function WorkersSort() {
   }
 
   return (
-    <div className="row mt-4">
+    <div className="sort-filter">
       <Select name="sort" handleChange={handleChangeSort}>
         <option value="NameAscend">От А до Я</option>
         <option value="NameDescend">От Я до А</option>

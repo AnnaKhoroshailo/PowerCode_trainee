@@ -1,5 +1,7 @@
-import { asyncGetWorker } from "../actions/";
-import { asyncUpdateWorker } from "../actions/";
+import "./index.css";
+
+import { asyncGetWorker } from "../../actions/";
+import { asyncUpdateWorker } from "../../actions/";
 
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
@@ -11,9 +13,9 @@ import moment from "moment";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
-import Button from "../components/Button";
-import Input from "../components/Input";
-import Select from "../components/Select";
+import Button from "../../components/Button";
+import Input from "../../components/Input";
+import Select from "../../components/Select";
 
 function ChangeWorker() {
   const { id } = useParams();

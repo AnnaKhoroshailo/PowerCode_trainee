@@ -1,5 +1,7 @@
-import { asyncGetWorker } from "../actions/";
-import { STATUS } from "../constants/workerStatus.js";
+import "./index.css";
+
+import { asyncGetWorker } from "../../actions/";
+import { STATUS } from "../../constants/workerStatus.js";
 
 import moment from "moment";
 
