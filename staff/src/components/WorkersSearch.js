@@ -1,36 +1,24 @@
-// import Button from "./Button";
+import imgSearch from "../images/search.svg";
 import Input from "./Input";
-// import { useRef } from "react";
-// import debounce from "lodash.debounce";
+import debounce from "lodash.debounce";
 
-// import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 function WorkersSearch() {
-  // const dispatch = useDispatch();
-  // const searchInput = useRef(null);
-
-  // function handleClick() {
-  //   dispatch({type: "SEARCH_WORKERS", payload: searchInput.current.value});
-  // }
-  // const handleChangeSearch = debounce(() => {
-  //   dispatch({ type: "SEARCH_WORKERS", payload: searchInput.current.value });
-  // }, 1000);
-
-  // function handleClickReset() {
-  //   searchInput.current.value = "";
-  //   dispatch({ type: "SEARCH_WORKERS", payload: "" });
-  // }
+  const dispatch = useDispatch();
+  const handleChangeSearch = debounce((e) => {
+    dispatch({ type: "SEARCH_WORKERS", payload: e.target.value });
+  }, 1000);
 
   return (
-    <div>
+    <div className="search">
       <Input
         type="text"
         placeholder="Введите имя сотрудника"
-        handleChange="handleChangeSearch"
         search
+        handleChange={handleChangeSearch}
       />
-      {/* <Button type="button" onClick={handleClick}>Поиск</Button> */}
-      {/* <Button label="Отмена" handleClick={() => handleClickReset} /> */}
+      <img src={imgSearch} className="search__img" />
     </div>
   );
 }

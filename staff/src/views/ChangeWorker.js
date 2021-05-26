@@ -11,7 +11,9 @@ import moment from "moment";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
-import { Button } from "react-bootstrap";
+import Button from "../components/Button";
+import Input from "../components/Input";
+import Select from "../components/Select";
 
 function ChangeWorker() {
   const { id } = useParams();
@@ -79,11 +81,11 @@ function ChangeWorker() {
         <form onSubmit={formik.handleSubmit} className="form">
           <div className="form-elem">
             <label>Имя</label>
-            <input
+            <Input
               type="text"
               name="name"
               value={formik.values.name}
-              onChange={formik.handleChange}
+              handleChange={formik.handleChange}
             />
             {formik.errors.name && formik.touched.name && (
               <p className="form-error">{formik.errors.name}</p>
@@ -91,11 +93,11 @@ function ChangeWorker() {
           </div>
           <div className="form-elem">
             <label>URL картинки</label>
-            <input
+            <Input
               type="text"
               name="url"
               value={formik.values.url}
-              onChange={formik.handleChange}
+              handleChange={formik.handleChange}
             />
             {formik.errors.url && formik.touched.url && (
               <p className="form-error">{formik.errors.url}</p>
@@ -103,11 +105,11 @@ function ChangeWorker() {
           </div>
           <div className="form-elem">
             <label>Должность</label>
-            <input
+            <Input
               type="text"
               name="position"
               value={formik.values.position}
-              onChange={formik.handleChange}
+              handleChange={formik.handleChange}
             />
             {formik.errors.position && formik.touched.position && (
               <p className="form-error">{formik.errors.position}</p>
@@ -115,7 +117,7 @@ function ChangeWorker() {
           </div>
           <div className="form-elem">
             <label>Зарплата</label>
-            <input
+            <Input
               type="text"
               name="salary"
               value={formik.values.salary}
@@ -127,22 +129,22 @@ function ChangeWorker() {
           </div>
           <div className="form-elem">
             <label>Статус</label>
-            <select
+            <Select
               name="status"
               value={formik.values.status}
-              onChange={formik.handleChange}
+              handleChange={formik.handleChange}
             >
               <option value="Работает">Работает</option>
               <option value="В отпуске">В отпуске</option>
               <option value="Уволен">Уволен</option>
-            </select>
+            </Select>
             {formik.errors.status && formik.touched.status && (
               <p className="form-error">{formik.errors.status}</p>
             )}
           </div>
           <div className="form-elem">
             <label>Дата начала работы</label>
-            <input
+            <Input
               type="date"
               name="date"
               value={formik.values.date}

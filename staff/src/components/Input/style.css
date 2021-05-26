@@ -5,9 +5,11 @@
   border: none;
   text-transform: none;
   padding: 7px 15px;
+  display: block;
 }
 .input-text--search {
   width: 100%;
   border-radius: 25px;
   border: 10px solid #2d2f44;
+  border-right-width: 53px;
 }

@@ -4,13 +4,14 @@ function Button(props) {
   if (props.smallSize) btnClass += " btn--small";
   if (props.warning) btnClass += " btn--warning";
   if (props.error) btnClass += " btn--error";
+  if (props.add) btnClass += " btn--add";
   return (
     <button
       className={btnClass}
       onClick={props.handleClick}
       disabled={props.disabled ? "true" : ""}
     >
-      {props.label}
+      {props.children}
     </button>
   );
 }

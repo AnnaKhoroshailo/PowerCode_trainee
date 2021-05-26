@@ -1,0 +1,16 @@
+.status {
+  border-radius: 10px;
+  display: inline-block;
+  padding: 5px 19px;
+  font-size: 12px;
+  margin-top: 19px;
+}
+.status--work {
+  background: #73b469;
+}
+.status--vacation {
+  background: #e4a648;
+}
+.status--fired {
+  background: #c05e5e;
+}

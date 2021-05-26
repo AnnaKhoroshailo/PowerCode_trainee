@@ -8,17 +8,33 @@ body {
   background: #7e939f;
 }
 img {
-  width: 100%;
+  max-width: 100%;
+}
+.container--main {
+  width: 70%;
+  margin-right: 20%;
+  position: relative;
+  transform: translateX(0);
+}
+aside {
+  width: 20%;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: -20%;
+  padding: 0 50px;
 }
 .text-right {
   text-align: right;
 }
-h1 {
-  margin-bottom: 20px;
-  text-align: center;
+.search {
+  position: relative;
+  margin-top: 48px;
 }
-section {
-  margin: 20px 0;
+.search__img {
+  position: absolute;
+  right: 13px;
+  top: 13px;
 }
 .card {
   background: #2d2f44;
@@ -50,54 +66,20 @@ section {
 .card__salary {
   font-size: 24px;
 }
-.card__status {
-  border-radius: 10px;
-  display: inline-block;
-  padding: 5px 19px;
-  font-size: 12px;
-  margin-top: 19px;
-}
 .card__date {
   text-align: center;
   margin-top: 63px;
   font-size: 16px;
 }
-.form-error {
-  color: #dc3545;
-}
-.form-elem {
-  margin-bottom: 20px;
-}
-.form-elem input,
-.form-elem input:focus,
-.form-elem select,
-.form-elem select:focus,
-.form-control,
-.form-control:focus {
-  border: 1px solid #0d6efd;
-  padding: 5px;
-  border-radius: 0.25rem;
-}
-.form-elem input:focus,
-.form-elem select:focus,
-.form-control:focus {
-  box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
-  outline: none;
-}
-.form-elem input,
-.form-elem select,
-.search-reset {
-  margin-left: 5px;
-}
-.search-input {
-  margin-right: 5px;
-}
 .form-check-inline:last-child {
   margin-right: 0;
 }
-.sort-button {
-  padding: 2px 5px;
-  margin: 5px;
+.salary-range {
+  background: #2d2f44;
+  border-radius: 10px;
+}
+.salary-range .input-text {
+  width: 50%;
 }
 @media all and (min-width: 768px) {
   .md-justify-content-end {

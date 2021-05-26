@@ -28,6 +28,12 @@
   border-radius: 5px;
   padding: 5px;
 }
+.btn--add {
+  background-image: url(../../images/add.svg);
+  background-repeat: no-repeat;
+  background-position: 19px center;
+  padding-left: 56px;
+}
 .btn:disabled {
   color: #333;
 }

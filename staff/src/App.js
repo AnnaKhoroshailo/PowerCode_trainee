@@ -4,7 +4,7 @@ import WorkerCard from "./components/WorkerCard.js";
 import WorkersSearch from "./components/WorkersSearch.js";
 import WorkersByStatus from "./components/WorkersByStatus.js";
 import WorkersSort from "./components/WorkersSort.js";
-import PriceRange from "./components/PriceRange.js";
+import SalaryRange from "./components/SalaryRange.js";
 
 import { useHistory } from "react-router-dom";
 import Button from "./components/Button";
@@ -61,34 +61,35 @@ function App() {
 
   return (
     <div className="App">
-      <section className="container">
-        <div className="row">
-          <div className="col-12">
-            <WorkersSearch />
+      <section>
+        <div className="container container--main">
+          <div className="row">
+            <div className="col-12">
+              <WorkersSearch />
+            </div>
+          </div>
+
+          <div className="row mt-4 align-items-center">
+            <div className="col-md-6 col-lg-3">
+              <Button add handleClick={handleClickAdd}>
+                Добавить сотрудника
+              </Button>
+            </div>
           </div>
         </div>
-
-        <div className="row mt-4 align-items-center">
-          <div className="col-md-3">
-            <Button
-              handleClick={handleClickAdd}
-              label="Добавить нового сотрудника"
-            />
+      </section>
+      <section>
+        <div className="container container--main">
+          <div className="row mt-4">
+            {staff.map((worker, i) => (
+              <WorkerCard worker={worker} key={i} />
+            ))}
           </div>
-          <div className="col-md-5">
-            <PriceRange />
-          </div>
-          <div className="col-md-4 d-flex flex-wrap md-justify-content-end">
+          <aside>
+            <WorkersSort />
             <WorkersByStatus />
-          </div>
-        </div>
-
-        <WorkersSort />
-
-        <div className="row mt-4">
-          {staff.map((worker, i) => (
-            <WorkerCard worker={worker} key={i} />
-          ))}
+            <SalaryRange />
+          </aside>
         </div>
       </section>
     </div>
