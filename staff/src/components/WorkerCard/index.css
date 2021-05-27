@@ -1,15 +1,15 @@
 .card {
   background: #2d2f44;
   border-radius: 13px;
-  color: #fff;
   padding: 20px 22px;
 }
-.pos-abs {
-  position: absolute;
+.bg-dark {
+  position: fixed;
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
+  z-index: 2;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,9 +24,6 @@
 }
 .card__name {
   font-size: 18px;
-  display: inline-block;
-  color: #fff;
-  text-decoration: none;
   margin-top: 24px;
 }
 .card__lastname {

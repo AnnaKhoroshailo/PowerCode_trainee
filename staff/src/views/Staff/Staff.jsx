@@ -87,9 +87,11 @@ function Staff() {
           </div>
         </div>
         <aside className="d-none d-md-block">
-          <WorkersSort />
-          <WorkersByStatus />
-          <SalaryRange />
+          <div className="pos-fixed">
+            <WorkersSort />
+            <WorkersByStatus />
+            <SalaryRange />
+          </div>
         </aside>
       </section>
     </div>

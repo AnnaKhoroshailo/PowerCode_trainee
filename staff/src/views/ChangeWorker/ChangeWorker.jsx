@@ -77,10 +77,10 @@ function ChangeWorker() {
   }
 
   return (
-    <div className="Form">
-      <section className="container">
-        <h1>Cотрудник</h1>
-        <form onSubmit={formik.handleSubmit} className="form">
+    <section className="container h-100 d-flex align-items-center">
+      <div className="form-staff">
+        <h1>Изменение</h1>
+        <form onSubmit={formik.handleSubmit}>
           <div className="form-elem">
             <label>Имя</label>
             <Input
@@ -160,8 +160,8 @@ function ChangeWorker() {
             <Button type="submit">Сохранить</Button>
           </div>
         </form>
-      </section>
-    </div>
+      </div>
+    </section>
   );
 }
 

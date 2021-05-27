@@ -1,6 +1,5 @@
 .wrap {
   position: relative;
-  transform: translateX(0);
 }
 .container--main {
   width: 70%;
@@ -12,8 +11,12 @@
 }
 aside {
   width: 20%;
-  position: fixed;
+  position: absolute;
   top: 0;
-  right: 0;
+  right: 46px;
+  padding: 0 46px;
+}
+.pos-fixed {
+  position: fixed;
   padding: 0 46px;
 }

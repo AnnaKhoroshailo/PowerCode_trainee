@@ -51,9 +51,9 @@ function AddWorker() {
   }
 
   return (
-    <div className="Form">
-      <section className="container">
-        <h1>Новый сотрудник</h1>
+    <section className="container h-100 d-flex align-items-center">
+      <div className="form-staff">
+        <h1>Создание</h1>
         <form onSubmit={formik.handleSubmit} className="form">
           <div className="form-elem">
             <label>Имя</label>
@@ -135,8 +135,8 @@ function AddWorker() {
             <Button type="submit">Добавить</Button>
           </div>
         </form>
-      </section>
-    </div>
+      </div>
+    </section>
   );
 }
 

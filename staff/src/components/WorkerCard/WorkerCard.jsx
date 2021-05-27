@@ -5,6 +5,8 @@ import "./index.css";
 import Button from "../Button";
 import Tag from "../Tag";
 
+import { useState } from "react";
+
 import { useHistory } from "react-router-dom";
 
 import { useDispatch } from "react-redux";
@@ -15,17 +17,25 @@ import moment from "moment";
 import swal from "sweetalert";
 
 function WorkerCard({ worker }) {
-  const dispatch = useDispatch();
-
   let history = useHistory();
-  function handleClickZoom(e) {
-    e.target.parentElement.className += " pos-abs";
-    e.target.className += " card--abs";
+
+  const dispatch = useDispatch();
+  //let flagBg = false;
+  const [flagBg, setFlagBg] = useState(false);
+
+  function handleClickCard(e) {
+    e.stopPropagation();
+    setFlagBg(true);
   }
-  function handleClickEdit(id) {
+  function handleClickBg() {
+    setFlagBg(false);
+  }
+  function handleClickEdit(e, id) {
+    e.stopPropagation();
     history.push(`/workers/${id}/edit`);
   }
-  function handleClickDelete(id, worker) {
+  function handleClickDelete(e, id, worker) {
+    e.stopPropagation();
     swal({
       title: "Вы уверены, что хотите удалить?",
       text: "Сотрудник удалится!",
@@ -40,20 +50,20 @@ function WorkerCard({ worker }) {
   }
   return (
     <div className="col-sm-6 col-lg-4 mb-2">
-      <div>
-        <div className="card" onClick={handleClickZoom}>
+      <div className={flagBg ? "bg-dark" : ""} onClick={handleClickBg}>
+        <div className="card" onClick={handleClickCard}>
           <div className="d-flex align-items-center justify-content-between">
             <Button
               warning
               smallSize
-              handleClick={() => handleClickEdit(worker?.id)}
+              handleClick={(e) => handleClickEdit(e, worker?.id)}
             >
               <img src={imgEdit} alt="Редактировать" />
             </Button>
             <Button
               error
               smallSize
-              handleClick={() => handleClickDelete(worker?.id, worker)}
+              handleClick={(e) => handleClickDelete(e, worker?.id, worker)}
             >
               <img src={imgDelete} alt="Удалить" />
             </Button>
