@@ -39,3 +39,14 @@
 .btn:disabled {
   color: #333;
 }
+.btn--form {
+  width: 100%;
+  max-width: 280px;
+}
+.btn--back {
+  background: #2d2f44;
+  padding: 19px 28px;
+  position: absolute;
+  left: -100px;
+  top: 0;
+}

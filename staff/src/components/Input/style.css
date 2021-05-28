@@ -1,14 +1,15 @@
 .input-text {
   background: #fdf7f7;
+  color: #2d2f44;
   border-radius: 15px;
   outline: none;
   border: none;
   text-transform: none;
-  padding: 7px 15px;
   display: block;
   margin: 0 auto;
   width: 100%;
   max-width: 280px;
+  padding: 11px 17px;
 }
 .input-text--search {
   border-radius: 25px;
@@ -16,4 +17,11 @@
   width: calc(100% - 40px);
   max-width: 100%;
   margin: 0;
+  padding: 7px 15px;
+}
+.input-text--salary {
+  margin: 0;
+  width: 48%;
+  margin-top: 17px;
+  padding: 7px 15px;
 }

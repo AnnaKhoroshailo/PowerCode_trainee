@@ -14,20 +14,23 @@ import { useDispatch } from "react-redux";
 import { asyncDeleteWorker } from "../../actions";
 
 import moment from "moment";
+import "moment/locale/ru";
 import swal from "sweetalert";
 
 function WorkerCard({ worker }) {
   let history = useHistory();
 
   const dispatch = useDispatch();
-  //let flagBg = false;
   const [flagBg, setFlagBg] = useState(false);
+  const [cardWidth, setCardWidth] = useState("100%");
 
   function handleClickCard(e) {
+    setCardWidth(`${e.currentTarget.offsetWidth}px`);
     e.stopPropagation();
     setFlagBg(true);
   }
   function handleClickBg() {
+    setCardWidth("100%");
     setFlagBg(false);
   }
   function handleClickEdit(e, id) {
@@ -49,9 +52,13 @@ function WorkerCard({ worker }) {
     });
   }
   return (
-    <div className="col-sm-6 col-lg-4 mb-2">
+    <div className="col-sm-6 col-lg-4 mb-4">
       <div className={flagBg ? "bg-dark" : ""} onClick={handleClickBg}>
-        <div className="card" onClick={handleClickCard}>
+        <div
+          className="card"
+          onClick={handleClickCard}
+          style={{ width: cardWidth }}
+        >
           <div className="d-flex align-items-center justify-content-between">
             <Button
               warning
@@ -75,7 +82,9 @@ function WorkerCard({ worker }) {
           <div className="card__salary">{worker?.salary} $</div>
           <Tag type={worker?.status}>{worker?.status}</Tag>
           <div className="card__date">
-            {moment(`Date(${worker?.date})`).locale("ru").format("DD/MM/YYYY")}
+            {moment(`Date(${worker?.date})`)
+              .locale("ru")
+              .format("DD MMMM YYYY")}
           </div>
         </div>
       </div>

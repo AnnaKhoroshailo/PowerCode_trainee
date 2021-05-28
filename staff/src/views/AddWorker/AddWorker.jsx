@@ -1,4 +1,5 @@
 import "./index.css";
+import imgBack from "../../images/back.svg";
 
 import { asyncAddWorker } from "../../actions/";
 import { useHistory } from "react-router-dom";
@@ -17,7 +18,8 @@ function AddWorker() {
 
   const formik = useFormik({
     initialValues: {
-      name: "",
+      firstName: "",
+      lastName: "",
       url: "",
       position: "",
       salary: "",
@@ -25,7 +27,8 @@ function AddWorker() {
       date: "",
     },
     validationSchema: Yup.object({
-      name: Yup.string().required("Обязательно!"),
+      firstName: Yup.string().required("Обязательно!"),
+      lastName: Yup.string().required("Обязательно!"),
       url: Yup.string().required("Обязательно!"),
       position: Yup.string().required("Обязательно!"),
       salary: Yup.number().typeError("Введите число!").required("Обязательно!"),
@@ -40,13 +43,13 @@ function AddWorker() {
         date: new Date(values.date).getTime(),
         salary: +values.salary,
       };
-      dispatch(asyncAddWorker(worker), handleClick);
-      handleClick();
+      dispatch(asyncAddWorker(worker), handleClickHome);
+      handleClickHome();
     },
   });
 
   let history = useHistory();
-  function handleClick() {
+  function handleClickHome() {
     history.push("/");
   }
 
@@ -54,58 +57,74 @@ function AddWorker() {
     <section className="container h-100 d-flex align-items-center">
       <div className="form-staff">
         <h1>Создание</h1>
+        <Button mobileNone back handleClick={handleClickHome}>
+          <img src={imgBack} alt="На главную" />
+        </Button>
         <form onSubmit={formik.handleSubmit} className="form">
-          <div className="form-elem">
-            <label>Имя</label>
+          <div className="form-staff__elem">
+            <label className="form-staff__text">Имя</label>
             <Input
               type="text"
-              name="name"
-              value={formik.values.name}
-              onChange={formik.handleChange}
+              name="firstName"
+              value={formik.values.firstName}
+              handleChange={formik.handleChange}
             />
-            {formik.errors.name && formik.touched.name && (
-              <p className="form-error">{formik.errors.name}</p>
+            {formik.errors.firstName && formik.touched.firstName && (
+              <p className="form-staff__error">{formik.errors.firstName}</p>
             )}
           </div>
-          <div className="form-elem">
-            <label>URL картинки</label>
+          <div className="form-staff__elem">
+            <label className="form-staff__text">фамилия</label>
+            <Input
+              type="text"
+              name="lastName"
+              value={formik.values.lastName}
+              handleChange={formik.handleChange}
+            />
+            {formik.errors.lastName && formik.touched.lastName && (
+              <p className="form-staff__error">{formik.errors.lastName}</p>
+            )}
+          </div>
+          <div className="form-staff__elem">
+            <label className="form-staff__text">URL картинки</label>
             <Input
               type="text"
               name="url"
               value={formik.values.url}
-              onChange={formik.handleChange}
+              handleChange={formik.handleChange}
             />
             {formik.errors.url && formik.touched.url && (
-              <p className="form-error">{formik.errors.url}</p>
+              <p className="form-staff__error">{formik.errors.url}</p>
             )}
           </div>
-          <div className="form-elem">
-            <label>Должность</label>
+          <div className="form-staff__elem">
+            <label className="form-staff__text">Должность</label>
             <Input
               type="text"
               name="position"
               value={formik.values.position}
-              onChange={formik.handleChange}
+              handleChange={formik.handleChange}
             />
             {formik.errors.position && formik.touched.position && (
-              <p className="form-error">{formik.errors.position}</p>
+              <p className="form-staff__error">{formik.errors.position}</p>
             )}
           </div>
-          <div className="form-elem">
-            <label>Зарплата</label>
+          <div className="form-staff__elem">
+            <label className="form-staff__text">Зарплата</label>
             <Input
               type="text"
               name="salary"
               value={formik.values.salary}
-              onChange={formik.handleChange}
+              handleChange={formik.handleChange}
             />
             {formik.errors.salary && formik.touched.salary && (
-              <p className="form-error">{formik.errors.salary}</p>
+              <p className="form-staff__error">{formik.errors.salary}</p>
             )}
           </div>
-          <div className="form-elem">
-            <label>Статус</label>
+          <div className="form-staff__elem">
+            <label className="form-staff__text">Статус</label>
             <Select
+              formSelect
               name="status"
               value={formik.values.status}
               handleChange={formik.handleChange}
@@ -116,23 +135,25 @@ function AddWorker() {
               <option value="Уволен">Уволен</option>
             </Select>
             {formik.errors.status && formik.touched.status && (
-              <p className="form-error">{formik.errors.status}</p>
+              <p className="form-staff__error">{formik.errors.status}</p>
             )}
           </div>
-          <div className="form-elem">
-            <label>Дата начала работы</label>
+          <div className="form-staff__elem">
+            <label className="form-staff__text">Дата начала работы</label>
             <Input
               type="date"
               name="date"
               value={formik.values.date}
-              onChange={formik.handleChange}
+              handleChange={formik.handleChange}
             />
             {formik.errors.date && formik.touched.date && (
-              <p className="form-error">{formik.errors.date}</p>
+              <p className="form-staff__error">{formik.errors.date}</p>
             )}
           </div>
-          <div>
-            <Button type="submit">Добавить</Button>
+          <div className="form-staff__btn w-100">
+            <Button formBtn type="submit">
+              Создать
+            </Button>
           </div>
         </form>
       </div>

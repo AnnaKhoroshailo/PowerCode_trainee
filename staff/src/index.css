@@ -3,7 +3,6 @@
   padding: 0;
   box-sizing: border-box;
   text-transform: uppercase;
-  color: #fdf1f1;
 }
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -12,6 +11,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: #7e939f;
+  color: #fdf1f1;
 }
 img {
   max-width: 100%;
@@ -22,10 +22,26 @@ img {
 .form-staff {
   background: #2d2f44;
   border-radius: 20px;
-  margin: 0 auto;
+  margin: 10% auto;
   width: 100%;
   max-width: 610px;
   text-align: center;
+  padding: 38px 0;
+  position: relative;
+}
+.form-staff__elem {
+  margin-top: 28px;
+}
+.form-staff__text {
+  display: block;
+  margin-bottom: 10px;
+}
+.form-staff__btn {
+  margin-top: 38px;
+}
+.form-staff__error {
+  color: #c05e5e;
+  margin-top: 10px;
 }
 .h-100 {
   min-height: 100vh;

@@ -71,7 +71,7 @@ function Staff() {
 
           <div className="row mt-4 align-items-center">
             <div className="col-12">
-              <Button add handleClick={handleClickAdd}>
+              <Button type="button" add handleClick={handleClickAdd}>
                 Добавить сотрудника
               </Button>
             </div>

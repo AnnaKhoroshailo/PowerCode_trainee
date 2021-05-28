@@ -41,11 +41,13 @@ function SalaryRange() {
       <h3>Зарплата</h3>
       <form className="d-flex justify-content-between">
         <Input
+          salary
           type="text"
           placeholder="От"
           handleChange={handleChangeMinSalary}
         />
         <Input
+          salary
           type="text"
           placeholder="До"
           handleChange={handleChangeMaxSalary}
