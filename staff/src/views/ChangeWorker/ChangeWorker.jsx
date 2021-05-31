@@ -177,7 +177,7 @@ function ChangeWorker() {
             )}
           </div>
           <div className="form-staff__btn">
-            <Button formBtn type="submit">
+            <Button formBtn submit>
               Сохранить
             </Button>
           </div>

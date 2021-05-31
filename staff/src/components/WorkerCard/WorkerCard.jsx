@@ -4,6 +4,7 @@ import "./index.css";
 
 import Button from "../Button";
 import Tag from "../Tag";
+import Modal from "../Modal";
 
 import { useState } from "react";
 
@@ -15,7 +16,6 @@ import { asyncDeleteWorker } from "../../actions";
 
 import moment from "moment";
 import "moment/locale/ru";
-import swal from "sweetalert";
 
 function WorkerCard({ worker }) {
   let history = useHistory();
@@ -23,6 +23,7 @@ function WorkerCard({ worker }) {
   const dispatch = useDispatch();
   const [flagBg, setFlagBg] = useState(false);
   const [cardWidth, setCardWidth] = useState("100%");
+  const [flagModal, setFlagModal] = useState(false);
 
   function handleClickCard(e) {
     setCardWidth(`${e.currentTarget.offsetWidth}px`);
@@ -37,19 +38,16 @@ function WorkerCard({ worker }) {
     e.stopPropagation();
     history.push(`/workers/${id}/edit`);
   }
-  function handleClickDelete(e, id, worker) {
+  function handleClickDelete(e) {
     e.stopPropagation();
-    swal({
-      title: "Вы уверены, что хотите удалить?",
-      text: "Сотрудник удалится!",
-      icon: "warning",
-      buttons: ["Отмена", "Удалить"],
-      dangerMode: true,
-    }).then((willDelete) => {
-      if (willDelete) {
-        dispatch(asyncDeleteWorker(id, worker));
-      }
-    });
+    setFlagModal(true);
+  }
+  function handleClickDeleteYes(id, worker) {
+    dispatch(asyncDeleteWorker(id, worker));
+    setFlagModal(false);
+  }
+  function handleClickDeleteNo() {
+    setFlagModal(false);
   }
   return (
     <div className="col-sm-6 col-lg-4 mb-4">
@@ -88,6 +86,24 @@ function WorkerCard({ worker }) {
           </div>
         </div>
       </div>
+      <Modal visible={flagModal}>
+        <h3>Вы уверены что хотите удалить сотрудника?</h3>
+        <p className="mt-5 mb-4">
+          После нажатия на кнопку удалить вы не сможете востановить сотрудника.
+          Эта операция безвозвратна
+        </p>
+        <div className="d-flex justify-content-center">
+          <Button
+            modalBtn
+            handleClick={() => handleClickDeleteYes(worker?.id, worker)}
+          >
+            Подтвердить
+          </Button>
+          <Button modalBtn error handleClick={handleClickDeleteNo}>
+            Отменить
+          </Button>
+        </div>
+      </Modal>
     </div>
   );
 }

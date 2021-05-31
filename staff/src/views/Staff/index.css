@@ -3,28 +3,62 @@
 }
 .container--main {
   width: 65%;
+  margin-right: 25%;
+  max-width: 100%;
 }
-@media (min-width: 768px) {
+@media (max-width: 767px) {
   .container--main {
-    margin-right: 25%;
+    width: 85%;
+    margin-right: auto;
   }
 }
-aside {
+@media (max-width: 575px) {
+  .container--main {
+    max-width: 350px;
+  }
+}
+.aside-panel {
   width: 25%;
   position: absolute;
   top: 0;
   right: 46px;
-  padding: 0 3%;
+  padding: 0 46px;
 }
-.pos-fixed {
+.aside-panel__block {
   position: fixed;
   padding: 0 3%;
 }
-@media (min-width: 992px) {
-  aside {
+@media (max-width: 991px) {
+  .aside-panel {
+    padding: 0 3%;
+  }
+  .aside-panel__block {
     padding: 0 46px;
   }
-  .pos-fixed {
-    padding: 0 46px;
-  }
+}
+.menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  width: 100%;
+  max-width: 500px;
+  top: 65px;
+  z-index: 2;
+  background: #442d3b;
+  border-radius: 15px;
+}
+.menu--open {
+  display: block;
+}
+.menu .salary-filter,
+.menu .status-filter {
+  background: none;
+  margin: 0;
+  padding: 20px 0;
+}
+.menu .btn {
+  margin: 20px 0;
+}
+.top-line .select-elem {
+  margin: 0;
 }

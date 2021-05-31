@@ -12,4 +12,8 @@
 .select-elem--form {
   background: #fdf7f7;
   color: #2d2f44;
+  border-radius: 15px;
+}
+.select-elem--m0 {
+  margin: 0;
 }

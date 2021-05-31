@@ -2,8 +2,8 @@ import "./index.css";
 import imgBack from "../../images/back.svg";
 
 import { asyncAddWorker } from "../../actions/";
-import { useHistory } from "react-router-dom";
 
+import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 import { useFormik } from "formik";
@@ -47,6 +47,8 @@ function AddWorker() {
       handleClickHome();
     },
   });
+
+  // function handleMouseDown(e) {}
 
   let history = useHistory();
   function handleClickHome() {
@@ -151,7 +153,7 @@ function AddWorker() {
             )}
           </div>
           <div className="form-staff__btn w-100">
-            <Button formBtn type="submit">
+            <Button formBtn submit disabled={!(formik.isValid && formik.dirty)}>
               Создать
             </Button>
           </div>

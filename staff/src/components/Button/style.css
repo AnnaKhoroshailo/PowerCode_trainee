@@ -36,12 +36,29 @@
   background-position: 19px center;
   padding-left: 56px;
 }
-.btn:disabled {
+.btn:disabled,
+.btn--disabled {
   color: #333;
 }
 .btn--form {
   width: 100%;
   max-width: 280px;
+}
+.btn--modal {
+  margin: 0 29px;
+  width: 270px;
+}
+@media (max-width: 767px) {
+  .btn--modal {
+    margin: 0 10px;
+    width: auto;
+    padding: 13px;
+  }
+}
+.btn--menu,
+.btn--menu:hover {
+  background: none;
+  padding: 0;
 }
 .btn--back {
   background: #2d2f44;

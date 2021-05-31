@@ -1,0 +1,28 @@
+.modal {
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: none;
+  z-index: 3;
+  background: rgba(0, 0, 0, 0.74);
+  text-align: center;
+}
+.modal--visible {
+  display: flex;
+}
+.modal__content {
+  width: 90%;
+  max-width: 903px;
+  padding: 55px 92px;
+  background: #442d3b;
+  border-radius: 25px;
+}
+@media (max-width: 767px) {
+  .modal__content {
+    padding: 55px 20px;
+  }
+}
