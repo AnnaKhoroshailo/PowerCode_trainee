@@ -6,6 +6,7 @@
   padding: 13px 27px;
   background: #73b469;
   color: #fff;
+  font-weight: 700;
 }
 .btn:hover,
 .btn:disabled {
@@ -43,10 +44,14 @@
 .btn--form {
   width: 100%;
   max-width: 280px;
+  font-size: 14px;
 }
 .btn--modal {
   margin: 0 29px;
   width: 270px;
+  text-transform: none;
+  font-size: 24px;
+  font-weight: 400;
 }
 @media (max-width: 767px) {
   .btn--modal {

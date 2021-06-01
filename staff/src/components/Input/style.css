@@ -10,6 +10,7 @@
   width: 100%;
   max-width: 280px;
   padding: 11px 17px;
+  font-size: 14px;
 }
 .input-text--search {
   border-radius: 25px;
@@ -21,7 +22,11 @@
 }
 .input-text--salary {
   margin: 0;
-  width: 48%;
+  width: 50px;
   margin-top: 17px;
-  padding: 7px 15px;
+  padding: 7px 11px;
+  text-align: center;
+}
+.input-text--salary:nth-child(2) {
+  margin-left: 28px;
 }

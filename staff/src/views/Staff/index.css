@@ -26,14 +26,14 @@
 }
 .aside-panel__block {
   position: fixed;
-  padding: 0 3%;
+  padding: 0 46px;
 }
 @media (max-width: 991px) {
   .aside-panel {
     padding: 0 3%;
   }
   .aside-panel__block {
-    padding: 0 46px;
+    padding: 0 3%;
   }
 }
 .menu {
@@ -41,7 +41,7 @@
   position: absolute;
   right: 0;
   width: 100%;
-  max-width: 500px;
+  max-width: 320px;
   top: 65px;
   z-index: 2;
   background: #442d3b;

@@ -1,5 +1,7 @@
 .label-check {
-  display: block;
+  font-weight: 700;
+  text-transform: none;
+  margin-top: 8px;
 }
 .input-check {
   width: 20px;
@@ -11,7 +13,6 @@
   -webkit-appearance: initial;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   margin-right: 15px;
-  margin-top: 8px;
 }
 .input-check:after {
   content: "";

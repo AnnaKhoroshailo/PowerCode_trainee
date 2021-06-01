@@ -26,3 +26,8 @@
     padding: 55px 20px;
   }
 }
+.modal__content h3,
+.modal__content p {
+  font-size: 24px;
+  text-transform: none;
+}

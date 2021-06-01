@@ -1,4 +1,3 @@
-import "./index.css";
 import imgBack from "../../images/back.svg";
 
 import { asyncGetWorker } from "../../actions/";

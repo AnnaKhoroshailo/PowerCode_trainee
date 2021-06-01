@@ -2,8 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap-grid.min.css";
 import "./index.css";
-import "typeface-roboto";
-// import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
@@ -22,11 +20,6 @@ import ChangeWorker from "./views/ChangeWorker";
 
 const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk)));
 const history = syncHistoryWithStore(createBrowserHistory(), store);
-// const theme = createMuiTheme({
-//   typography: {
-//     fontFamily: ["Roboto", "serif"].join(","),
-//   },
-// });
 
 ReactDOM.render(
   <Provider store={store}>

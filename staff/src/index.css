@@ -3,9 +3,14 @@
   padding: 0;
   box-sizing: border-box;
   text-transform: uppercase;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+}
+h3 {
+  font-weight: 700;
 }
 body {
-  font-family: "Roboto regular";
   background: #7e939f;
   color: #fdf1f1;
 }

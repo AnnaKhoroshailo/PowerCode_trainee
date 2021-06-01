@@ -22,7 +22,8 @@ function Staff() {
   const minSalary = useSelector((state) => state.salaryWorkers.minSalary);
   const maxSalary = useSelector((state) => state.salaryWorkers.maxSalary);
   const dispatch = useDispatch();
-  const [flagModal, setFlagModal] = useState(false);
+  const [flagModalSearch, setFlagModalSearch] = useState(false);
+  const [flagModalSalary, setFlagModalSalary] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
 
   const staff = useSelector((state) =>
@@ -43,12 +44,17 @@ function Staff() {
   }, [dispatch]);
 
   useEffect(() => {
-    if (searchWorkers && staff.length === 0) setFlagModal(true);
-    if (minSalary && maxSalary && staff.length === 0) setFlagModal(true);
-  }, [searchWorkers, staff]);
+    if (searchWorkers && staff.length === 0) setFlagModalSearch(true);
+    if (minSalary && maxSalary && minSalary <= maxSalary && staff.length === 0)
+      setFlagModalSalary(true);
+  }, [searchWorkers, minSalary, maxSalary]);
 
-  function handleClickClose() {
-    setFlagModal(false);
+  function handleClickCloseSearchModal() {
+    setFlagModalSearch(false);
+  }
+
+  function handleClickCloseSalaryModal() {
+    setFlagModalSalary(false);
   }
 
   function handleClickMenu() {
@@ -113,14 +119,27 @@ function Staff() {
           </div>
         </aside>
       </section>
-      <Modal visible={flagModal}>
+      <Modal visible={flagModalSearch}>
         <h3>Сотрудников не найдено</h3>
         <p className="mt-5 mb-4">
-          Сотрудников, удовлетворяющих условиям, не найдено. Проверьте данные и
-          аовторите попытку
+          Сотрудников c таким именем не найдено. Проверьте данные и повторите
+          попытку
         </p>
         <div className="d-flex justify-content-center">
-          <Button modalBtn error handleClick={handleClickClose}>
+          <Button modalBtn error handleClick={handleClickCloseSearchModal}>
+            Закрыть
+          </Button>
+        </div>
+      </Modal>
+
+      <Modal visible={flagModalSalary}>
+        <h3>Сотрудников не найдено</h3>
+        <p className="mt-5 mb-4">
+          Сотрудников с такой зарплатой не найдено. Проверьте данные и повторите
+          попытку
+        </p>
+        <div className="d-flex justify-content-center">
+          <Button modalBtn error handleClick={handleClickCloseSalaryModal}>
             Закрыть
           </Button>
         </div>

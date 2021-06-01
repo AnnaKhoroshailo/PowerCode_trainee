@@ -3,7 +3,7 @@ import "./index.css";
 function Checkbox(props) {
   let checkboxClass = "input-check";
   return (
-    <label className="label-check">
+    <label className="label-check d-flex align-items-center">
       <input
         type="checkbox"
         name={props.name}
