@@ -1,40 +1,24 @@
 .wrap {
+  max-width: 1488px;
+  margin: 0 auto;
   position: relative;
 }
 .container--main {
-  width: 65%;
-  margin-right: 25%;
-  max-width: 100%;
+  position: relative;
+  width: 944px;
+  margin-right: 272px;
 }
-@media (max-width: 767px) {
-  .container--main {
-    width: 85%;
-    margin-right: auto;
-  }
-}
-@media (max-width: 575px) {
-  .container--main {
-    max-width: 350px;
-  }
+.cards {
+  display: flex;
 }
 .aside-panel {
-  width: 25%;
+  right: 0;
   position: absolute;
   top: 0;
-  right: 46px;
-  padding: 0 46px;
 }
 .aside-panel__block {
-  position: fixed;
-  padding: 0 46px;
-}
-@media (max-width: 991px) {
-  .aside-panel {
-    padding: 0 3%;
-  }
-  .aside-panel__block {
-    padding: 0 3%;
-  }
+  width: 272px;
+  padding: 15px 46px;
 }
 .menu {
   display: none;
@@ -61,4 +45,20 @@
 }
 .top-line .select-elem {
   margin: 0;
+}
+@media (max-width: 1199px) {
+  .container--main {
+    width: 608px;
+  }
+}
+@media (max-width: 991px) {
+  .container--main {
+    width: 620px;
+    margin-right: auto;
+  }
+}
+@media (max-width: 767px) {
+  .container--main {
+    width: 284px;
+  }
 }

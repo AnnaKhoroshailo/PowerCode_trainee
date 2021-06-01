@@ -1,7 +1,12 @@
+.worker {
+  margin: 15px 38px;
+  width: 260px;
+}
 .card {
   background: #2d2f44;
   border-radius: 13px;
   padding: 20px 22px;
+  width: 260px;
 }
 .bg-dark {
   position: fixed;
@@ -42,4 +47,29 @@
   text-align: center;
   margin-top: 63px;
   font-weight: 700;
+}
+@media (min-width: 1200px) {
+  .worker:nth-child(2n + 1) {
+    margin-left: 0;
+  }
+  .worker:nth-child(3n) {
+    margin-right: 0;
+    margin-left: 38px;
+  }
+  .worker:nth-child(4n) {
+    margin-left: 0;
+  }
+}
+@media (min-width: 768px) and (max-width: 1199px) {
+  .worker:nth-child(2n + 1) {
+    margin-left: 0;
+  }
+  .worker:nth-child(2n) {
+    margin-right: 0;
+  }
+}
+@media (max-width: 767px) {
+  .worker {
+    margin: 15px 0;
+  }
 }

@@ -68,7 +68,7 @@ function Staff() {
 
   return (
     <div className="App">
-      <section>
+      <section className="wrap">
         <div className="container container--main">
           <div className="row">
             <div className="col-12">
@@ -76,7 +76,7 @@ function Staff() {
             </div>
           </div>
 
-          <div className="d-md-none row mt-4 pos-relative top-line">
+          <div className="d-lg-none row mt-4 pos-relative top-line">
             <div className="col-9">
               <WorkersSort />
             </div>
@@ -105,13 +105,13 @@ function Staff() {
       </section>
       <section className="wrap">
         <div className="container container--main">
-          <div className="row mt-4">
+          <div className="row mt-4 cards">
             {staff.map((worker, i) => (
               <WorkerCard worker={worker} key={i} />
             ))}
           </div>
         </div>
-        <aside className="d-none d-md-block aside-panel">
+        <aside className="d-none d-lg-block aside-panel">
           <div className="aside-panel__block">
             <WorkersSort />
             <WorkersByStatus />

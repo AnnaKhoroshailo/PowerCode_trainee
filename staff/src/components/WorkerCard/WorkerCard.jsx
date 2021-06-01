@@ -22,16 +22,13 @@ function WorkerCard({ worker }) {
 
   const dispatch = useDispatch();
   const [flagBg, setFlagBg] = useState(false);
-  const [cardWidth, setCardWidth] = useState("100%");
   const [flagModal, setFlagModal] = useState(false);
 
   function handleClickCard(e) {
-    setCardWidth(`${e.currentTarget.offsetWidth}px`);
     e.stopPropagation();
     setFlagBg(true);
   }
   function handleClickBg() {
-    setCardWidth("100%");
     setFlagBg(false);
   }
   function handleClickEdit(e, id) {
@@ -50,13 +47,9 @@ function WorkerCard({ worker }) {
     setFlagModal(false);
   }
   return (
-    <div className="col-sm-6 col-lg-4 mb-4">
+    <div className="worker col-md-6 col-xl-4 mb-4">
       <div className={flagBg ? "bg-dark" : ""} onClick={handleClickBg}>
-        <div
-          className="card"
-          onClick={handleClickCard}
-          style={{ width: cardWidth }}
-        >
+        <div className="card" onClick={handleClickCard}>
           <div className="d-flex align-items-center justify-content-between">
             <Button
               warning
