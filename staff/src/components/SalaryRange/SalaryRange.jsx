@@ -27,7 +27,7 @@ function SalaryRange() {
     handleChangeSalary();
   }, [min, max]);
   const handleChangeSalary = () => {
-    if (min && max && min <= max) {
+    if (min !== "" && max !== "" && min <= max) {
       dispatch({
         type: "SALARY_WORKERS",
         payload: {
@@ -43,7 +43,7 @@ function SalaryRange() {
           maxSalary: Infinity,
         },
       });
-    } else if (min && max && min > max) setFlagModal(true);
+    } else if (min !== "" && max !== "" && min > max) setFlagModal(true);
   };
 
   function handleClickClose() {

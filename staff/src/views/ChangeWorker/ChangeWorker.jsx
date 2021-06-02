@@ -13,9 +13,8 @@ import moment from "moment";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
+import Form from "../../components/Form";
 import Button from "../../components/Button";
-import Input from "../../components/Input";
-import Select from "../../components/Select";
 
 function ChangeWorker() {
   const { id } = useParams();
@@ -86,101 +85,16 @@ function ChangeWorker() {
         <Button mobileNone back handleClick={handleClickHome}>
           <img src={imgBack} alt="На главную" />
         </Button>
-        <form onSubmit={formik.handleSubmit}>
-          <div className="form-staff__elem">
-            <label className="form-staff__text">Имя</label>
-            <Input
-              type="text"
-              name="firstName"
-              value={formik.values.firstName}
-              handleChange={formik.handleChange}
-            />
-            {formik.errors.firstName && formik.touched.firstName && (
-              <p className="form-staff__error">{formik.errors.firstName}</p>
-            )}
-          </div>
-          <div className="form-staff__elem">
-            <label className="form-staff__text">Фамилия</label>
-            <Input
-              type="text"
-              name="lastName"
-              value={formik.values.lastName}
-              handleChange={formik.handleChange}
-            />
-            {formik.errors.lastName && formik.touched.lastName && (
-              <p className="form-staff__error">{formik.errors.lastName}</p>
-            )}
-          </div>
-          <div className="form-staff__elem">
-            <label className="form-staff__text">URL картинки</label>
-            <Input
-              type="text"
-              name="url"
-              value={formik.values.url}
-              handleChange={formik.handleChange}
-            />
-            {formik.errors.url && formik.touched.url && (
-              <p className="form-staff__error">{formik.errors.url}</p>
-            )}
-          </div>
-          <div className="form-staff__elem">
-            <label className="form-staff__text">Должность</label>
-            <Input
-              type="text"
-              name="position"
-              value={formik.values.position}
-              handleChange={formik.handleChange}
-            />
-            {formik.errors.position && formik.touched.position && (
-              <p className="form-staff__error">{formik.errors.position}</p>
-            )}
-          </div>
-          <div className="form-staff__elem">
-            <label className="form-staff__text">Зарплата</label>
-            <Input
-              type="text"
-              name="salary"
-              value={formik.values.salary}
-              handleChange={formik.handleChange}
-            />
-            {formik.errors.salary && formik.touched.salary && (
-              <p className="form-staff__error">{formik.errors.salary}</p>
-            )}
-          </div>
-          <div className="form-staff__elem">
-            <label className="form-staff__text">Статус</label>
-            <Select
-              formSelect
-              name="status"
-              value={formik.values.status}
-              handleChange={formik.handleChange}
-            >
-              <option value="Работает">Работает</option>
-              <option value="В отпуске">В отпуске</option>
-              <option value="Уволен">Уволен</option>
-            </Select>
-            {formik.errors.status && formik.touched.status && (
-              <p className="form-staff__error">{formik.errors.status}</p>
-            )}
-          </div>
-          <div className="form-staff__elem">
-            <label className="form-staff__text">Дата начала работы</label>
-            <Input
-              type="date"
-              name="date"
-              value={formik.values.date}
-              handleChange={formik.handleChange}
-            />
-            {formik.errors.date && formik.touched.date && (
-              <p className="form-staff__error">{formik.errors.date}</p>
-            )}
-          </div>
-          <div className="form-staff__btn">
-            <Button formBtn submit>
-              Сохранить
-            </Button>
-          </div>
-        </form>
+        <Form
+          handleSubmit={formik.handleSubmit}
+          handleChange={formik.handleChange}
+          values={formik.values}
+          errors={formik.errors}
+          touched={formik.touched}
+          isValid={formik.isValid}
+          dirty={formik.dirty}
+          buttonText="Редактировать"
+        />
       </div>
     </section>
   );

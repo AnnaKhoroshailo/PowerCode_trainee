@@ -45,7 +45,13 @@ function Staff() {
 
   useEffect(() => {
     if (searchWorkers && staff.length === 0) setFlagModalSearch(true);
-    if (minSalary && maxSalary && minSalary <= maxSalary && staff.length === 0)
+    if (
+      (minSalary &&
+        maxSalary &&
+        minSalary <= maxSalary &&
+        staff.length === 0) ||
+      (minSalary == 0 && maxSalary == 0)
+    )
       setFlagModalSalary(true);
   }, [searchWorkers, minSalary, maxSalary]);
 

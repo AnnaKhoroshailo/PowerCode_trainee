@@ -66,7 +66,10 @@ function WorkerCard({ worker }) {
               <img src={imgDelete} alt="Удалить" />
             </Button>
           </div>
-          <img src={worker?.url} className="card__img" />
+          <div
+            style={{ backgroundImage: `url(${worker?.url})` }}
+            className="card__img"
+          ></div>
           <div className="card__name">{worker?.firstName}</div>
           <div className="card__lastname">{worker?.lastName}</div>
           <div className="card__position">{worker?.position}</div>

@@ -30,20 +30,6 @@ img {
   padding: 38px 0;
   position: relative;
 }
-.form-staff__elem {
-  margin-top: 28px;
-}
-.form-staff__text {
-  display: block;
-  margin-bottom: 10px;
-}
-.form-staff__btn {
-  margin-top: 38px;
-}
-.form-staff__error {
-  color: #c05e5e;
-  margin-top: 10px;
-}
 .h-100 {
   min-height: 100vh;
 }
