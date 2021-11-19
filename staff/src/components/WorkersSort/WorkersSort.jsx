@@ -3,17 +3,23 @@ import "./style.css";
 
 import { SORT } from "../../constants/sort";
 
+import { asyncGetStaff } from "../../actions";
+
 import { useSelector, useDispatch } from "react-redux";
 
 function WorkersSort() {
   const dispatch = useDispatch();
   const staff = useSelector((state) => state.staff);
+
   function handleChangeSort(e) {
+    if (e.target.value == SORT.default) {
+      dispatch(asyncGetStaff());
+    }
     if (e.target.value == SORT.nameAscend) {
       dispatch({
         type: "FETCH_LIST_STAFF",
         payload: staff.sort((worker1, worker2) =>
-          worker1.name > worker2.name ? 1 : -1
+          worker1.firstName > worker2.firstName ? 1 : -1
         ),
       });
     }
@@ -21,7 +27,7 @@ function WorkersSort() {
       dispatch({
         type: "FETCH_LIST_STAFF",
         payload: staff.sort((worker1, worker2) =>
-          worker1.name < worker2.name ? 1 : -1
+          worker1.firstName < worker2.firstName ? 1 : -1
         ),
       });
     }
@@ -62,6 +68,7 @@ function WorkersSort() {
   return (
     <div className="sort-filter">
       <Select name="sort" handleChange={handleChangeSort}>
+        <option value="По умолчанию">По умолчанию</option>
         <option value="Имя по возростанию">От А до Я</option>
         <option value="Имя по убыванию">От Я до А</option>
         <option value="Дата по возростанию">Давно в компании</option>

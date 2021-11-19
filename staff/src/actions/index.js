@@ -15,17 +15,6 @@ export const asyncAddWorker = (worker) => (dispatсh) => {
     dispatсh({ type: "ADD_WORKER", payload: response.data });
   });
 };
-export const asyncUpdateWorker = (id, worker) => (dispatсh) => {
-  axios
-    .put(`${API}/${id}`, worker)
-    .then((response) => {
-      dispatсh({ type: "UPDATE_WORKER", payload: response.data });
-    })
-    .catch((error) => {
-      console.log(error.response);
-      dispatсh({ type: "UPDATE_WORKER", payload: { id: +id, ...worker } });
-    });
-};
 export const asyncDeleteWorker = (id, worker) => (dispatсh) => {
   axios
     .delete(`${API}/${id}`)
@@ -35,5 +24,16 @@ export const asyncDeleteWorker = (id, worker) => (dispatсh) => {
     .catch((error) => {
       console.log(error.response);
       dispatсh({ type: "DELETE_WORKER", payload: worker });
+    });
+};
+export const asyncUpdateWorker = (id, worker) => (dispatсh) => {
+  axios
+    .put(`${API}/${id}`, worker)
+    .then((response) => {
+      dispatсh({ type: "UPDATE_WORKER", payload: response.data });
+    })
+    .catch((error) => {
+      console.log(error.response);
+      dispatсh({ type: "UPDATE_WORKER", payload: { id: +id, ...worker } });
     });
 };

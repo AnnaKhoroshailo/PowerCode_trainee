@@ -29,10 +29,12 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: right center;
+  position: relative;
+  top: -5px;
 }
 .card__name {
   font-size: 18px;
-  margin-top: 24px;
+  margin-top: 17.16px;
   font-weight: 700;
 }
 .card__lastname {
@@ -41,26 +43,23 @@
 }
 .card__position {
   font-size: 14px;
-  margin: 19px 0;
+  margin: 15px 0;
 }
 .card__salary {
   font-size: 24px;
 }
 .card__date {
   text-align: center;
-  margin-top: 63px;
+  margin-top: 30px;
   font-weight: 700;
 }
 @media (min-width: 1200px) {
-  .worker:nth-child(2n + 1) {
+  .worker:nth-child(3n + 1) {
     margin-left: 0;
   }
   .worker:nth-child(3n) {
     margin-right: 0;
     margin-left: 38px;
-  }
-  .worker:nth-child(4n) {
-    margin-left: 0;
   }
 }
 @media (min-width: 768px) and (max-width: 1199px) {

@@ -28,7 +28,7 @@
 }
 .btn--small {
   border-radius: 5px;
-  padding: 5px;
+  padding: 4px 7px;
 }
 .btn--add,
 .btn--add:hover {
