@@ -5,8 +5,8 @@
       "firstName": "Василий",
       "lastName": "Сухоруков",
       "url": "https://proforientator.ru/publications/articles/New%20Folder/programmist_st.jpg",
-      "position": "Веб-разработчик",
-      "salary": 500,
+      "position": "Front-end разработчик",
+      "salary": 700,
       "status": "Работает",
       "date": 1530471537000
     },
@@ -15,8 +15,8 @@
       "firstName": "Мария",
       "lastName": "Сидоренко",
       "url": "https://st3.depositphotos.com/13794496/16404/i/600/depositphotos_164049244-stock-photo-designer-with-sketches-at-workplace.jpg",
-      "position": "Дизайнер",
-      "salary": 400,
+      "position": "Ui/ux дизайнер",
+      "salary": 650,
       "status": "Работает",
       "date": 1611090000000
     },
@@ -36,9 +36,29 @@
       "lastName": "Петрова",
       "url": "https://image.freepik.com/free-photo/beautiful-young-girl-is-working-with-documents-in-the-office-at-the-table_88135-1479.jpg",
       "position": "3д-дизайнер",
-      "salary": 450,
+      "salary": 600,
       "status": "В отпуске",
       "date": 1452031200000
+    },
+    {
+      "id": 5,
+      "firstName": "Олег",
+      "lastName": "Петренко",
+      "url": "https://st.depositphotos.com/1001951/4411/i/600/depositphotos_44118255-stock-photo-smiling-stylish-young-man-behind.jpg",
+      "position": "Back-end разработчик",
+      "salary": 800,
+      "status": "Уволен",
+      "date": 1398038400000
+    },
+    {
+      "id": 6,
+      "firstName": "Екатерина",
+      "lastName": "Порохова",
+      "url": "https://www.firestock.ru/download/s/87db21wr4wd8g6l/87f50b28_shutterstock_197496365.xxxlarge_2x.jpg?dl=0",
+      "position": "Бизнес-аналитик",
+      "salary": 700,
+      "status": "В отпуске",
+      "date": 1407110400000
     }
   ]
 }
