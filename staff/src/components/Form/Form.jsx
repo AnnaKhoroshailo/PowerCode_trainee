@@ -25,7 +25,7 @@ function Form(props) {
           name="lastName"
           value={props.values.lastName}
           handleChange={props.handleChange}
-          label="фамилия"
+          label="Фамилия"
         >
           {props.errors.lastName && props.touched.lastName && (
             <p className="form__error">{props.errors.lastName}</p>

@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
-import { Router, Route } from "react-router";
+import { Router, Route, Redirect } from "react-router";
 import { createBrowserHistory } from "history";
 import { syncHistoryWithStore } from "react-router-redux";
 
@@ -17,16 +17,25 @@ import reportWebVitals from "./reportWebVitals";
 import Staff from "./views/Staff";
 import AddWorker from "./views/AddWorker";
 import ChangeWorker from "./views/ChangeWorker";
+import LogIn from "./views/LogIn";
 
 const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk)));
 const history = syncHistoryWithStore(createBrowserHistory(), store);
+const user = sessionStorage.getItem("user");
 
 ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
-      <Route path="/" component={Staff} exact />
-      <Route path="/add" component={AddWorker} />
-      <Route path="/workers/:id/edit" component={ChangeWorker} />
+      <Route path="/" exact>
+        {user ? <Staff /> : <Redirect to="/login" />}
+      </Route>
+      <Route path="/login" component={LogIn} />
+      <Route path="/add">
+        {user ? <AddWorker /> : <Redirect to="/login" />}
+      </Route>
+      <Route path="/workers/:id/edit">
+        {user ? <ChangeWorker /> : <Redirect to="/login" />}
+      </Route>
     </Router>
   </Provider>,
   document.getElementById("root")

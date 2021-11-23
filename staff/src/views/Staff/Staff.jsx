@@ -50,7 +50,7 @@ function Staff() {
         maxSalary &&
         minSalary <= maxSalary &&
         staff.length === 0) ||
-      (minSalary == 0 && maxSalary == 0 && staff.length === 0)
+      ((minSalary === 0 || maxSalary === 0) && staff.length === 0)
     )
       setFlagModalSalary(true);
   }, [searchWorkers, minSalary, maxSalary]);

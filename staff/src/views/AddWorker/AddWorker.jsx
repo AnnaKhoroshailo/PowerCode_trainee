@@ -41,7 +41,7 @@ function AddWorker() {
         date: new Date(values.date).getTime(),
         salary: +values.salary,
       };
-      dispatch(asyncAddWorker(worker), handleClickHome);
+      dispatch(asyncAddWorker(worker));
       handleClickHome();
     },
   });

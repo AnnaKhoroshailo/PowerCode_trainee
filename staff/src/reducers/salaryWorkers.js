@@ -1,5 +1,5 @@
 const initialState = {
-  minSalary: 0,
+  minSalary: null,
   maxSalary: Infinity,
 };
 
