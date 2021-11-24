@@ -61,11 +61,10 @@
       "date": 1407110400000
     }
   ],
-  "admin": [
-    {
-      "id": 1,
-      "login": "admin",
-      "password": "admin123"
-    }
-  ]
+  "admin":
+  {
+    "id": 1,
+    "login": "admin",
+    "password": "admin123"
+  }
 }

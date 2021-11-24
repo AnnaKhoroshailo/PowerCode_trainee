@@ -52,8 +52,7 @@ export const asyncUpdateWorker = (id, worker) => (dispatсh) => {
     });
 };
 export const asyncLogIn = (user) => () => {
-  axios
-    .post(`${API}/admin`, user)
+  axios(`${API}/admin?login=${user.login}&password=${user.password}`)
     .then((response) => {
       sessionStorage.setItem("user", JSON.stringify(response.data));
     })
