@@ -18,7 +18,7 @@ function LogInForm(props) {
       </div>
       <div className="form__elem">
         <Input
-          type="text"
+          type="password"
           name="password"
           value={props.values.password}
           handleChange={props.handleChange}
