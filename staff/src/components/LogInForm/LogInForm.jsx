@@ -1,5 +1,3 @@
-import "./style.css";
-
 import Input from "../Input";
 import Button from "../Button";
 function LogInForm(props) {

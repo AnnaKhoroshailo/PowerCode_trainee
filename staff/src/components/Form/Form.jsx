@@ -1,5 +1,3 @@
-import "./style.css";
-
 import Input from "../Input";
 import Select from "../Select";
 import Button from "../Button";

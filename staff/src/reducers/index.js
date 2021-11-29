@@ -4,6 +4,7 @@ import staff from "./workers";
 import searchWorkers from "./searchWorkers";
 import statusWorkers from "./statusWorkers";
 import salaryWorkers from "./salaryWorkers";
+import authorize from "./authorize";
 
 export default combineReducers({
   routing: routerReducer,
@@ -11,4 +12,5 @@ export default combineReducers({
   searchWorkers,
   statusWorkers,
   salaryWorkers,
+  authorize,
 });

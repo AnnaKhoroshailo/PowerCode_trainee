@@ -1,15 +1,23 @@
 import { asyncLogIn } from "../../actions/";
 
-import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
 
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
 import LogInForm from "../../components/LogInForm";
+import Modal from "../../components/Modal";
+import Button from "../../components/Button";
 
 function LogIn() {
   const dispatch = useDispatch();
+  const authorize = useSelector((state) => state.authorize);
+  const [flagModal, setFlagModal] = useState(false);
+
+  useEffect(() => {
+    if (authorize && !authorize.length) setFlagModal(true);
+  }, [authorize]);
 
   const formik = useFormik({
     initialValues: {
@@ -25,13 +33,11 @@ function LogIn() {
         ...values,
       };
       dispatch(asyncLogIn(user));
-      handleClickHome();
     },
   });
 
-  let history = useHistory();
-  function handleClickHome() {
-    history.push("/");
+  function handleClickCloseModal() {
+    setFlagModal(false);
   }
 
   return (
@@ -48,6 +54,14 @@ function LogIn() {
           buttonText="Войти"
         />
       </div>
+      <Modal visible={flagModal}>
+        <h3>Логин или пароль неверный</h3>
+        <div className="mt-5 mb-4 d-flex justify-content-center">
+          <Button modalBtn error handleClick={handleClickCloseModal}>
+            Закрыть
+          </Button>
+        </div>
+      </Modal>
     </section>
   );
 }

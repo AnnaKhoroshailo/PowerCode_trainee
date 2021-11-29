@@ -36,6 +36,16 @@ img {
 .pos-relative {
   position: relative;
 }
+.form__elem {
+  margin-top: 28px;
+}
+.form__btn {
+  margin-top: 38px;
+}
+.form__error {
+  color: #c05e5e;
+  margin-top: 10px;
+}
 @media (min-width: 768px) {
   .d-md-flex {
     display: flex;

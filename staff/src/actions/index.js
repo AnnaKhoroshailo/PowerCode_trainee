@@ -1,5 +1,6 @@
 import axios from "axios";
 import { API } from "../constants/api.js";
+
 export const asyncGetStaff = () => (dispatсh) => {
   axios(`${API}/staff`)
     .then((response) => {
@@ -51,12 +52,19 @@ export const asyncUpdateWorker = (id, worker) => (dispatсh) => {
       dispatсh({ type: "UPDATE_WORKER", payload: { id: +id, ...worker } });
     });
 };
-export const asyncLogIn = (user) => () => {
+export const asyncLogIn = (user) => (dispatch) => {
   axios(`${API}/admin?login=${user.login}&password=${user.password}`)
     .then((response) => {
-      sessionStorage.setItem("user", JSON.stringify(response.data));
+      if (response.data.length) {
+        sessionStorage.setItem("user", JSON.stringify(response.data));
+        window.location.href = "/";
+        dispatch({ type: "AUTHORIZE", payload: response.data });
+      } else {
+        dispatch({ type: "AUTHORIZE", payload: [] });
+      }
     })
     .catch((error) => {
       console.log(error.response);
+      dispatch({ type: "AUTHORIZE", payload: [] });
     });
 };
