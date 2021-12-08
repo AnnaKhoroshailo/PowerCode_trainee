@@ -8,7 +8,7 @@ export default function staff(state = initialState, action) {
       return [
         ...state.filter((worker) => worker.id !== action.payload.id),
         action.payload,
-      ];
+      ].sort((worker1, worker2) => (worker1.id > worker2.id ? 1 : -1));
     case "DELETE_WORKER":
       return state.filter((worker) => worker.id !== action.payload.id);
     case "FETCH_LIST_STAFF":
